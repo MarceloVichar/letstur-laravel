@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Api\Controllers\Auth;
 
-use App\Http\Resources\Auth\UserResource;
+use App\Http\Api\Resources\Auth\UserResource;
 use Illuminate\Http\JsonResponse;
 
 class MeController

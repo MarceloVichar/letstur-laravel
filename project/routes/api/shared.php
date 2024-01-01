@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\MeController;
-use Illuminate\Support\Facades\Broadcast;
+use App\Http\Api\Controllers\Auth\LoginController;
+use App\Http\Api\Controllers\Auth\LogoutController;
+use App\Http\Api\Controllers\Auth\MeController;
 use Illuminate\Support\Facades\Route;
 
 /*

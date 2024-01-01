@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Api\Controllers\Admin;
 
 
 use App\Domain\Account\Models\User;
-use App\Http\Controllers\ResourceController;
-use App\Http\Resources\Auth\UserResource;
+use App\Http\Api\Resources\Auth\UserResource;
+use App\Http\Shared\Controllers\ResourceController;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class UserController extends ResourceController
