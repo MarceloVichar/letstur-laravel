@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Domain\Account\Models\User;
 use App\Enums\RoleEnum;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Domain\Account\Models\User>
  */
 class UserFactory extends Factory
 {

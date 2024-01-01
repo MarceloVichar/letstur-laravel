@@ -7,9 +7,9 @@ if (! function_exists('current_user')) {
     /**
      * Retorna uma instância do usuário corrente.
      *
-     * @return \App\Models\User|\Illuminate\Contracts\Auth\Authenticatable|null
+     * @return \App\Domain\Account\Models\User|\Illuminate\Contracts\Auth\Authenticatable|null
      */
-    function current_user(): ?App\Models\User
+    function current_user(): ?App\Domain\Account\Models\User
     {
         return auth()->user();
     }
@@ -30,5 +30,17 @@ if (! function_exists('output_date_format')) {
     function output_date_format($date): ?string
     {
         return iso8601($date);
+    }
+}
+
+if (! function_exists('pagination')) {
+    /**
+     * Retorna uma instância do builder de paginação.
+     *
+     * @return \App\Support\PaginationBuilder
+     */
+    function pagination($subject): App\Support\PaginationBuilder
+    {
+        return \App\Support\PaginationBuilder::for($subject);
     }
 }
