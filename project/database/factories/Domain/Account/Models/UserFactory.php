@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Domain\Account\Models;
 
 use App\Domain\Account\Enums\RoleEnum;
 use App\Domain\Account\Models\User;
