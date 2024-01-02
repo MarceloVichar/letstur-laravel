@@ -18,7 +18,6 @@ class UsersSeeder extends Seeder
         User::factory()
             ->admin()
             ->create([
-                'id' => '1',
                 'name' => 'Admin',
                 'email' => 'admin@letsgrow.com.br',
                 'password' => Hash::make('12345678'),
@@ -27,7 +26,6 @@ class UsersSeeder extends Seeder
         User::factory()
             ->company_admin()
             ->create([
-                'id' => '2',
                 'name' => 'Company admin',
                 'email' => 'company_admin@letsgrow.com.br',
                 'password' => Hash::make('12345678'),
@@ -36,7 +34,6 @@ class UsersSeeder extends Seeder
         User::factory()
             ->company_operator()
             ->create([
-                'id' => '3',
                 'name' => 'Company operator',
                 'email' => 'company_operator@letsgrow.com.br',
                 'password' => Hash::make('12345678'),

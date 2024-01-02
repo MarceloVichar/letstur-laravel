@@ -42,6 +42,11 @@ class UserRequest extends FormRequest
                 'string',
                 (new ValidEnumValue(RoleEnum::class))->strict(),
             ],
+            'companyId' => [
+                'sometimes',
+                'integer',
+                'exists:companies,id',
+            ],
         ];
 
         if ($this->isMethod('PUT')) {

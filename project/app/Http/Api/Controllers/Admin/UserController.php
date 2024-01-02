@@ -21,7 +21,7 @@ class UserController extends ResourceController
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
             ])
-            ->with(['roles'])
+            ->with(['roles', 'company'])
             ->allowedSorts(['name', 'email', 'created_at'])
             ->defaultSort('created_at')
             ->resource(UserResource::class);
@@ -31,6 +31,7 @@ class UserController extends ResourceController
     {
         $user->loadMissing([
             'roles',
+            'company',
         ]);
 
         return UserResource::make($user);

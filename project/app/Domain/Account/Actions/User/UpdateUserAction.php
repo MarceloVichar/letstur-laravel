@@ -9,7 +9,9 @@ class UpdateUserAction
 {
     public function execute(User $user, UserData $data): User
     {
-        $dataArray = $data->toArray();
+        $dataArray = array_keys_as($data->toArray(), [
+            'companyId' => 'company_id',
+        ]);
 
         if (array_key_exists('password', $dataArray)) {
             $dataArray['password'] = Hash::make($data->password);

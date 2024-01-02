@@ -9,7 +9,9 @@ class CreateUserAction
 {
     public function execute(UserData $data): User
     {
-        $dataArray = $data->toArray();
+        $dataArray = array_keys_as($data->toArray(), [
+            'companyId' => 'company_id',
+        ]);
 
         $dataArray['password'] = Hash::make($dataArray['password']);
 
