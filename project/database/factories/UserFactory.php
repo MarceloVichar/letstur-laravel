@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Domain\Account\Enums\RoleEnum;
 use App\Domain\Account\Models\User;
-use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

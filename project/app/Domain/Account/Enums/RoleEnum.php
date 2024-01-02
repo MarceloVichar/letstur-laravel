@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\Domain\Account\Enums;
 
 use App\Support\Enum;
 

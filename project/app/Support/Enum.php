@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-use App\Exceptions\InvalidEnumValueException;
+use App\Domain\Shared\Exceptions\InvalidEnumValueException;
 
 abstract class Enum
 {

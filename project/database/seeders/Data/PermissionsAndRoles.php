@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Data;
 
-use App\Enums\RoleEnum;
+use App\Domain\Account\Enums\RoleEnum;
 use Illuminate\Support\Collection;
 
 class PermissionsAndRoles
@@ -18,9 +18,13 @@ class PermissionsAndRoles
                 'users' => $permissions('users'),
             ],
 
-            RoleEnum::COMPANY_OPERATOR => [],
+            RoleEnum::COMPANY_OPERATOR => [
+                'users' => $permissions('users'),
+            ],
 
-            RoleEnum::COMPANY_ADMIN => []
+            RoleEnum::COMPANY_ADMIN => [
+                'users' => $permissions('users'),
+            ]
         ];
     }
 
