@@ -1,34 +1,37 @@
 <?php
 
-namespace App\Domain\Account\Actions\User;
+namespace App\Domain\Account\Actions\Company;
 
-use Spatie\LaravelData\Attributes\Validation\ArrayType;
 use Spatie\LaravelData\Attributes\Validation\Email;
-use Spatie\LaravelData\Attributes\Validation\Exists;
-use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Nullable;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class UserData extends Data
+class UpdateCompanyData extends Data
 {
     public function __construct(
         #[Required, StringType]
         public string|Optional $name,
 
+        #[Required, StringType]
+        public string|Optional $tradingName,
+
+        #[Required, StringType]
+        public string|Optional $cnpj,
+
+        #[Nullable, StringType]
+        public string|Optional $ie,
+
         #[Required, StringType, Email]
         public string|Optional $email,
 
         #[Required, StringType]
-        public string|Optional $password,
+        public string|Optional $phone,
 
-        #[Required, ArrayType]
-        public array|Optional $roles,
-
-        #[Nullable, IntegerType, Exists('companies', 'id')]
-        public int|Optional $companyId
+        #[Nullable, StringType]
+        public string|Optional $secondaryPhone,
     ) {
     }
 }

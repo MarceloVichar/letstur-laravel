@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Controllers\Auth;
 
-use App\Http\Api\Resources\Auth\UserResource;
+use App\Http\Api\Resources\Auth\MeResource;
 use Illuminate\Http\JsonResponse;
 
 class MeController
@@ -11,6 +11,6 @@ class MeController
     {
         $user = current_user()
             ->loadMissing('roles');;
-        return response()->json(UserResource::make($user), 200);
+        return response()->json(MeResource::make($user), 200);
     }
 }
