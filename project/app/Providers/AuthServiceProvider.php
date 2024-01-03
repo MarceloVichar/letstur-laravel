@@ -7,6 +7,8 @@ use App\Domain\Account\Models\Company;
 use App\Domain\Account\Models\User;
 use App\Domain\Account\Policies\CompanyPolicy;
 use App\Domain\Account\Policies\UserPolicy;
+use App\Domain\Records\Models\Driver;
+use App\Domain\Records\Policies\DriverPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -18,7 +20,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-        Company::class => CompanyPolicy::class
+        Company::class => CompanyPolicy::class,
+        Driver::class => DriverPolicy::class
     ];
 
     /**

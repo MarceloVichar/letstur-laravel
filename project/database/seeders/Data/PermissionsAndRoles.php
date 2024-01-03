@@ -26,6 +26,7 @@ class PermissionsAndRoles
             RoleEnum::COMPANY_ADMIN => [
                 'users' => $permissions('users'),
                 'companies' => collect(['view', 'update']),
+                'drivers' => $permissions('drivers'),
             ]
         ];
     }
@@ -35,6 +36,7 @@ class PermissionsAndRoles
         return collect([
             'users' => static::crud(),
             'companies' => static::crud(),
+            'drivers' => static::crud(),
         ]);
     }
 
