@@ -45,28 +45,4 @@ class UserPolicy
     {
         return $user->can('users delete');
     }
-
-    /**
-     * Determine whether the user can delete multiple models.
-     */
-    public function batchDelete(User $user): bool
-    {
-        return $user->can('users batch-delete');
-    }
-
-    /**
-     * Determine whether the user can impersonate other models.
-     */
-    public function impersonate(User $user): bool
-    {
-        return $user->can('users impersonate');
-    }
-
-    /**
-     * Determine whether the user can revoke the impersonation using other models.
-     */
-    public function revokeImpersonate(User $user): bool
-    {
-        return $user->can('users revoke-impersonate');
-    }
 }

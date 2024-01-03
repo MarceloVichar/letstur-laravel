@@ -1,27 +1,19 @@
 <?php
 
-namespace App\Domain\Account\Actions\User;
+namespace App\Domain\Account\Actions\Company;
 
-use App\Domain\Account\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Domain\Account\Models\Company;
 
-class UpdateUserAction
+class UpdateCompanyAction
 {
-    public function execute(User $user, UserData $data): User
+    public function execute(Company $company, CompanyData $data): Company
     {
         $dataArray = array_keys_as($data->toArray(), [
-            'companyId' => 'company_id',
+            'secondaryPhone' => 'secondary_phone',
+            'tradingName' => 'trading_name',
         ]);
 
-        if (array_key_exists('password', $dataArray)) {
-            $dataArray['password'] = Hash::make($data->password);
-        }
-
-        if ($roles = data_get($dataArray, 'roles')) {
-            $user->syncRoles($roles);
-        }
-
-        return tap($user)
+        return tap($company)
             ->update($dataArray);
     }
 }
