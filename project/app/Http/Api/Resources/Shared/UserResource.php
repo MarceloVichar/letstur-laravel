@@ -16,6 +16,7 @@ class UserResource extends JsonResource
                 return $this->roles->pluck('name');
             }),
             'company' => CompanyResource::make($this->whenLoaded('company')),
+            'companyId' => $this->company_id,
             'createdAt' => iso8601($this->created_at),
             'updatedAt' => output_date_format($this->updated_at),
         ];

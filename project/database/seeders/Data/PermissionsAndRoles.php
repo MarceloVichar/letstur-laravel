@@ -25,6 +25,7 @@ class PermissionsAndRoles
 
             RoleEnum::COMPANY_ADMIN => [
                 'users' => $permissions('users'),
+                'companies' => collect(['view', 'update']),
             ]
         ];
     }

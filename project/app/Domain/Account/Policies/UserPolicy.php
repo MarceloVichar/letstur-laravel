@@ -4,7 +4,7 @@ namespace App\Domain\Account\Policies;
 
 use App\Domain\Account\Models\User;
 
-class UserPolicy
+class UserPolicy extends UserCompanyPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -17,9 +17,9 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user): bool
+    public function view(User $user, User $requestUser): bool
     {
-        return $user->can('users view');
+        return $this->checkUserCompany($user, $requestUser, 'users view');
     }
 
     /**
@@ -33,16 +33,16 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user): bool
+    public function update(User $user, User $requestUser): bool
     {
-        return $user->can('users update');
+        return $this->checkUserCompany($user, $requestUser, 'users update');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user): bool
+    public function delete(User $user, User $requestUser): bool
     {
-        return $user->can('users delete');
+        return $this->checkUserCompany($user, $requestUser, 'users delete');
     }
 }

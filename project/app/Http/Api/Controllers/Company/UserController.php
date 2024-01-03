@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Api\Controllers\Admin;
+namespace App\Http\Api\Controllers\Company;
 
 use App\Domain\Account\Actions\User\CreateUserAction;
 use App\Domain\Account\Actions\User\DeleteUserAction;
 use App\Domain\Account\Actions\User\UpdateUserAction;
 use App\Domain\Account\Actions\User\UserData;
 use App\Domain\Account\Models\User;
-use App\Http\Api\Requests\Admin\UserRequest;
+use App\Http\Api\Requests\Company\UserRequest;
 use App\Http\Api\Resources\Shared\UserResource;
 use App\Http\Shared\Controllers\ResourceController;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -18,13 +18,16 @@ class UserController extends ResourceController
     {
         $this->authorize('viewAny', User::class);
 
-        return pagination(User::query())
+        $users = app(User::class)
+            ->where('company_id', current_user()->company_id);
+
+        return pagination($users)
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
                 AllowedFilter::partial('role', 'roles.name'),
             ])
-            ->with(['roles', 'company'])
+            ->with(['roles'])
             ->allowedSorts(['name', 'email', 'created_at'])
             ->defaultSort('created_at')
             ->resource(UserResource::class);
@@ -46,7 +49,10 @@ class UserController extends ResourceController
     {
         $this->authorize('create', User::class);
 
-        $data = UserData::validateAndCreate($request->validated());
+        $data = UserData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $user = app(CreateUserAction::class)
             ->execute($data);
