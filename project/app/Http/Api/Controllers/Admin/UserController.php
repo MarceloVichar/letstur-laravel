@@ -5,10 +5,10 @@ namespace App\Http\Api\Controllers\Admin;
 use App\Domain\Account\Actions\User\CreateUserAction;
 use App\Domain\Account\Actions\User\DeleteUserAction;
 use App\Domain\Account\Actions\User\UpdateUserAction;
-use App\Domain\Account\Models\User;
 use App\Domain\Account\Actions\User\UserData;
+use App\Domain\Account\Models\User;
 use App\Http\Api\Requests\Admin\UserRequest;
-use App\Http\Api\Resources\Auth\UserResource;
+use App\Http\Api\Resources\User\UserResource;
 use App\Http\Shared\Controllers\ResourceController;
 use Spatie\QueryBuilder\AllowedFilter;
 
@@ -16,6 +16,8 @@ class UserController extends ResourceController
 {
     public function index()
     {
+        $this->authorize('viewAny', User::class);
+
         return pagination(User::query())
             ->allowedFilters([
                 AllowedFilter::partial('name'),
@@ -29,6 +31,8 @@ class UserController extends ResourceController
 
     public function show(User $user)
     {
+        $this->authorize('view', $user);
+
         $user->loadMissing([
             'roles',
             'company',
@@ -39,7 +43,7 @@ class UserController extends ResourceController
 
     public function store(UserRequest $request)
     {
-        $this->authorize('users create');
+        $this->authorize('create', User::class);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -51,7 +55,7 @@ class UserController extends ResourceController
 
     public function update(UserRequest $request, User $user)
     {
-        $this->authorize('users update');
+        $this->authorize('update', $user);
 
         $data = UserData::validateAndCreate($request->validated());
 
@@ -63,7 +67,7 @@ class UserController extends ResourceController
 
     public function destroy(User $user)
     {
-        $this->authorize('users delete');
+        $this->authorize('delete', $user);
 
         app(DeleteUserAction::class)
             ->execute($user);
