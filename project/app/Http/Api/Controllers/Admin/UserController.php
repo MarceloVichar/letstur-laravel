@@ -3,12 +3,12 @@
 namespace App\Http\Api\Controllers\Admin;
 
 use App\Domain\Account\Actions\User\CreateUserAction;
-use App\Domain\Account\Actions\User\DeleteUserAction;
-use App\Domain\Account\Actions\User\UpdateUserAction;
+use App\Domain\Account\Actions\User\DeleteCompanyAction;
+use App\Domain\Account\Actions\User\UpdateCompanyAction;
 use App\Domain\Account\Actions\User\UserData;
 use App\Domain\Account\Models\User;
 use App\Http\Api\Requests\Admin\UserRequest;
-use App\Http\Api\Resources\User\UserResource;
+use App\Http\Api\Resources\Shared\UserResource;
 use App\Http\Shared\Controllers\ResourceController;
 use Spatie\QueryBuilder\AllowedFilter;
 
@@ -59,7 +59,7 @@ class UserController extends ResourceController
 
         $data = UserData::validateAndCreate($request->validated());
 
-        $user = app(UpdateUserAction::class)
+        $user = app(UpdateCompanyAction::class)
             ->execute($user, $data);
 
         return UserResource::make($user);
@@ -69,7 +69,7 @@ class UserController extends ResourceController
     {
         $this->authorize('delete', $user);
 
-        app(DeleteUserAction::class)
+        app(DeleteCompanyAction::class)
             ->execute($user);
 
         return response()->noContent();

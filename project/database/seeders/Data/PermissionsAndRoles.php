@@ -16,6 +16,7 @@ class PermissionsAndRoles
         return [
             RoleEnum::ADMIN => [
                 'users' => $permissions('users'),
+                'companies' => $permissions('companies'),
             ],
 
             RoleEnum::COMPANY_OPERATOR => [
@@ -32,6 +33,7 @@ class PermissionsAndRoles
     {
         return collect([
             'users' => static::crud(),
+            'companies' => static::crud(),
         ]);
     }
 

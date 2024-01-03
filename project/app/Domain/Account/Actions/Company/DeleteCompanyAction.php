@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Account\Actions\User;
+namespace App\Domain\Account\Actions\Company;
 
-use App\Domain\Account\Models\User;
+use App\Domain\Account\Models\Company;
 
-class DeleteUserAction
+class DeleteCompanyAction
 {
-    public function execute(User $user): bool
+    public function execute(Company $company): bool
     {
-        return $user->delete();
+        return $company->delete();
     }
 }
