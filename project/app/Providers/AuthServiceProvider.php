@@ -7,6 +7,8 @@ use App\Domain\Account\Models\Company;
 use App\Domain\Account\Models\User;
 use App\Domain\Account\Policies\CompanyPolicy;
 use App\Domain\Account\Policies\UserPolicy;
+use App\Domain\Events\Models\Event;
+use App\Domain\Events\Policies\EventPolicy;
 use App\Domain\Records\Models\Driver;
 use App\Domain\Records\Models\Locale;
 use App\Domain\Records\Models\Tour;
@@ -36,7 +38,8 @@ class AuthServiceProvider extends ServiceProvider
         TourGuide::class => TourGuidePolicy::class,
         Locale::class => LocalePolicy::class,
         TourType::class => TourTypePolicy::class,
-        Tour::class => TourPolicy::class
+        Tour::class => TourPolicy::class,
+        Event::class => EventPolicy::class
     ];
 
     /**
