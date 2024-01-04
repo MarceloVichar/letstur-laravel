@@ -27,6 +27,7 @@ class PermissionsAndRoles
                 'users' => $permissions('users'),
                 'companies' => collect(['view', 'update']),
                 'drivers' => $permissions('drivers'),
+                'vehicles' => $permissions('vehicles'),
             ]
         ];
     }
@@ -37,6 +38,7 @@ class PermissionsAndRoles
             'users' => static::crud(),
             'companies' => static::crud(),
             'drivers' => static::crud(),
+            'vehicles' => static::crud(),
         ]);
     }
 
