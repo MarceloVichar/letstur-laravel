@@ -9,6 +9,7 @@ use App\Http\Api\Controllers\Company\Records\TourGuideController;
 use App\Http\Api\Controllers\Company\Records\LocaleController;
 use App\Http\Api\Controllers\Company\Records\TourTypeController;
 use App\Http\Api\Controllers\Company\Records\TourController;
+use App\Http\Api\Controllers\Company\Events\EventController;
 use Illuminate\Support\Facades\Route;
 
 return [
@@ -23,4 +24,5 @@ return [
     Route::apiResource('locales', LocaleController::class),
     Route::apiResource('tour-types', TourTypeController::class),
     Route::apiResource('tours', TourController::class),
+    Route::apiResource('events', EventController::class)
 ];
