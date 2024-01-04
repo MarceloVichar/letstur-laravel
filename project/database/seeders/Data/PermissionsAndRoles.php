@@ -30,6 +30,7 @@ class PermissionsAndRoles
                 'vehicles' => $permissions('vehicles'),
                 'tour-guides' => $permissions('tour-guides'),
                 'locales' => $permissions('locales'),
+                'tour-types' => $permissions('tour-types'),
             ]
         ];
     }
@@ -43,6 +44,7 @@ class PermissionsAndRoles
             'vehicles' => static::crud(),
             'tour-guides' => static::crud(),
             'locales' => static::crud(),
+            'tour-types' => static::crud(),
         ]);
     }
 

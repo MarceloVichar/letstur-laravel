@@ -10,10 +10,12 @@ use App\Domain\Account\Policies\UserPolicy;
 use App\Domain\Records\Models\Driver;
 use App\Domain\Records\Models\Locale;
 use App\Domain\Records\Models\TourGuide;
+use App\Domain\Records\Models\TourType;
 use App\Domain\Records\Models\Vehicle;
 use App\Domain\Records\Policies\DriverPolicy;
 use App\Domain\Records\Policies\LocalePolicy;
 use App\Domain\Records\Policies\TourGuidePolicy;
+use App\Domain\Records\Policies\TourTypePolicy;
 use App\Domain\Records\Policies\VehiclePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -30,7 +32,8 @@ class AuthServiceProvider extends ServiceProvider
         Driver::class => DriverPolicy::class,
         Vehicle::class => VehiclePolicy::class,
         TourGuide::class => TourGuidePolicy::class,
-        Locale::class => LocalePolicy::class
+        Locale::class => LocalePolicy::class,
+        TourType::class => TourTypePolicy::class
     ];
 
     /**
