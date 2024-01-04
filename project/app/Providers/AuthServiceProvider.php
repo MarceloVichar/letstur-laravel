@@ -8,8 +8,10 @@ use App\Domain\Account\Models\User;
 use App\Domain\Account\Policies\CompanyPolicy;
 use App\Domain\Account\Policies\UserPolicy;
 use App\Domain\Records\Models\Driver;
+use App\Domain\Records\Models\TourGuide;
 use App\Domain\Records\Models\Vehicle;
 use App\Domain\Records\Policies\DriverPolicy;
+use App\Domain\Records\Policies\TourGuidePolicy;
 use App\Domain\Records\Policies\VehiclePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -24,7 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
         Company::class => CompanyPolicy::class,
         Driver::class => DriverPolicy::class,
-        Vehicle::class => VehiclePolicy::class
+        Vehicle::class => VehiclePolicy::class,
+        TourGuide::class => TourGuidePolicy::class
     ];
 
     /**

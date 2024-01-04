@@ -5,6 +5,7 @@ use App\Http\Api\Controllers\Company\Company\GetUserCompany;
 use App\Http\Api\Controllers\Company\Company\UpdateUserCompany;
 use App\Http\Api\Controllers\Company\Records\DriverController;
 use App\Http\Api\Controllers\Company\Records\VehicleController;
+use App\Http\Api\Controllers\Company\Records\TourGuideController;
 use Illuminate\Support\Facades\Route;
 
 return [
@@ -15,4 +16,5 @@ return [
 
     Route::apiResource('drivers', DriverController::class),
     Route::apiResource('vehicles', VehicleController::class),
+    Route::apiResource('tour-guides', TourGuideController::class)
 ];

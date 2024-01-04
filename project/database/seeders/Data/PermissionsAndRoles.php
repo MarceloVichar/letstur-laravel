@@ -28,6 +28,7 @@ class PermissionsAndRoles
                 'companies' => collect(['view', 'update']),
                 'drivers' => $permissions('drivers'),
                 'vehicles' => $permissions('vehicles'),
+                'tour-guides' => $permissions('tour-guides'),
             ]
         ];
     }
@@ -39,6 +40,7 @@ class PermissionsAndRoles
             'companies' => static::crud(),
             'drivers' => static::crud(),
             'vehicles' => static::crud(),
+            'tour-guides' => static::crud(),
         ]);
     }
 
