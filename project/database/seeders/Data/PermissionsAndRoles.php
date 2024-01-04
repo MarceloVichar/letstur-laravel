@@ -29,6 +29,7 @@ class PermissionsAndRoles
                 'drivers' => $permissions('drivers'),
                 'vehicles' => $permissions('vehicles'),
                 'tour-guides' => $permissions('tour-guides'),
+                'locales' => $permissions('locales'),
             ]
         ];
     }
@@ -41,6 +42,7 @@ class PermissionsAndRoles
             'drivers' => static::crud(),
             'vehicles' => static::crud(),
             'tour-guides' => static::crud(),
+            'locales' => static::crud(),
         ]);
     }
 
