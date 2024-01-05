@@ -33,6 +33,7 @@ class PermissionsAndRoles
                 'tour-types' => $permissions('tour-types'),
                 'tours' => $permissions('tours'),
                 'events' => $permissions('events'),
+                'sales' => $permissions('sales'),
             ]
         ];
     }
@@ -48,7 +49,8 @@ class PermissionsAndRoles
             'locales' => static::crud(),
             'tour-types' => static::crud(),
             'tours' => static::crud(),
-            'events' => static::crud()
+            'events' => static::crud(),
+            'sales' => static::crud(),
         ]);
     }
 
