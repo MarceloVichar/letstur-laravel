@@ -24,18 +24,22 @@ class CreateSaleAction
             ->create($dataArray);
     }
 
-    function convertCustomerData($dataArray, $data) {
-        if (isset($data->customer->name)) {
-            $dataArray['customer_name'] = $data->customer->name;
+    function convertCustomerData($dataArray)
+    {
+        if (!isset($dataArray['customer'])) {
+            return $dataArray;
         }
-        if (isset($data->customer->document)) {
-            $dataArray['customer_document'] = $data->customer->document;
+        if (isset($dataArray['customer']['name'])) {
+            $dataArray['customer_name'] = $dataArray['customer']['name'];
         }
-        if (isset($data->customer->email)) {
-            $dataArray['customer_email'] = $data->customer->email;
+        if (isset($dataArray['customer']['email'])) {
+            $dataArray['customer_email'] = $dataArray['customer']['email'];
         }
-        if (isset($data->customer->phone)) {
-            $dataArray['customer_phone'] = $data->customer->phone;
+        if (isset($dataArray['customer']['document'])) {
+            $dataArray['customer_document'] = $dataArray['customer']['document'];
+        }
+        if (isset($dataArray['customer']['phone'])) {
+            $dataArray['customer_phone'] = $dataArray['customer']['phone'];
         }
 
         unset($dataArray['customer']);

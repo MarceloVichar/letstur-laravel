@@ -20,6 +20,7 @@ class CreateSaleStrategy
 
             DB::beginTransaction();
             $saleData = SaleInfoData::validateAndCreate($data->toArray());
+
             $sale = $this->createSale($saleData);
 
             $this->attachEventSales($data->eventSales->toArray(), $sale);

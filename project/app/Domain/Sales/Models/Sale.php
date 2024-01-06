@@ -41,10 +41,4 @@ class Sale extends Model
             ->withPivot('quantity', 'total_value_cents', 'passengers')
             ->withTimestamps();
     }
-
-    public function eventsSales() : Collection
-    {
-        return $this->events()
-            ->get([]);
-    }
 }

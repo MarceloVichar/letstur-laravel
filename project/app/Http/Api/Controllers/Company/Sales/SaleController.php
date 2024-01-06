@@ -2,15 +2,14 @@
 
 namespace App\Http\Api\Controllers\Company\Sales;
 
-use App\Domain\Sales\Actions\Sale\DeleteSaleAction;
-use App\Domain\Sales\Actions\Sale\UpdateSaleAction;
 use App\Domain\Sales\Actions\Sale\SaleData;
 use App\Domain\Sales\Models\Sale;
 use App\Domain\Sales\Strategies\Sale\CreateSaleStrategy;
+use App\Domain\Sales\Strategies\Sale\DeleteSaleStrategy;
+use App\Domain\Sales\Strategies\Sale\UpdateSaleStrategy;
 use App\Http\Api\Requests\Company\Sales\SaleRequest;
 use App\Http\Api\Resources\Company\Sales\SaleResource;
 use App\Http\Shared\Controllers\ResourceController;
-use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 
 class SaleController extends ResourceController
@@ -28,7 +27,7 @@ class SaleController extends ResourceController
                 AllowedFilter::partial('customer_email'),
                 AllowedFilter::partial('customer_document'),
             ])
-            ->with(['company', 'seller', 'events'])
+            ->with(['seller'])
             ->allowedSorts(['created_at'])
             ->defaultSort('created_at')
             ->resource(SaleResource::class);
@@ -47,29 +46,33 @@ class SaleController extends ResourceController
         return SaleResource::make($sale);
     }
 
-    public function store(Request $request)
+    public function store(SaleRequest $request)
     {
         $this->authorize('create', Sale::class);
 
         $data = SaleData::validateAndCreate([
             'companyId' => current_user()->company_id,
             'sellerId' => current_user()->id,
-            ...$request->all(),
+            ...$request->validated(),
         ]);
 
         $sale = app(CreateSaleStrategy::class)
             ->execute($data);
 
-        return response()->json($sale);
+        return SaleResource::make($sale);
     }
 
     public function update(SaleRequest $request, Sale $sale)
     {
         $this->authorize('update', $sale);
 
-        $data = SaleData::validateAndCreate($request->validated());
+        $data = SaleData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            'sellerId' => current_user()->id,
+            ...$request->validated(),
+        ]);
 
-        $sale = app(UpdateSaleAction::class)
+        $sale = app(UpdateSaleStrategy::class)
             ->execute($sale, $data);
 
         return SaleResource::make($sale);
@@ -79,7 +82,7 @@ class SaleController extends ResourceController
     {
         $this->authorize('delete', $sale);
 
-        app(DeleteSaleAction::class)
+        app(DeleteSaleStrategy::class)
             ->execute($sale);
 
         return response()->noContent();

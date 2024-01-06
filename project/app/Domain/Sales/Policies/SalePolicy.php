@@ -4,6 +4,7 @@ namespace App\Domain\Sales\Policies;
 
 use App\Domain\Account\Models\User;
 use App\Domain\Account\Policies\UserCompanyPolicy;
+use App\Domain\Sales\Enums\SaleStatusEnum;
 use App\Domain\Sales\Models\Sale;
 
 class SalePolicy extends UserCompanyPolicy
@@ -37,7 +38,8 @@ class SalePolicy extends UserCompanyPolicy
      */
     public function update(User $user, Sale $sale): bool
     {
-        return $this->checkUserCompany($user, $sale, 'sales update');
+        return $sale->status === SaleStatusEnum::PENDING &&
+            $this->checkUserCompany($user, $sale, 'sales update');
     }
 
     /**

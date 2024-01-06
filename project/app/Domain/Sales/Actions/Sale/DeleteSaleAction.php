@@ -8,8 +8,6 @@ class DeleteSaleAction
 {
     public function execute(Sale $sale): bool
     {
-        $sale->events()->detach();
-
         return $sale->delete();
     }
 }
