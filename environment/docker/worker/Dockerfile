@@ -1,4 +1,4 @@
-FROM webdevops/php:8.1-alpine
+FROM webdevops/php:8.2-alpine
 
 LABEL maintainer="marcos.marcelo43@gmail.com"
 

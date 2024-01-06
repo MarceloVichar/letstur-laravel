@@ -21,6 +21,8 @@ use App\Domain\Records\Policies\TourGuidePolicy;
 use App\Domain\Records\Policies\TourPolicy;
 use App\Domain\Records\Policies\TourTypePolicy;
 use App\Domain\Records\Policies\VehiclePolicy;
+use App\Domain\Sales\Models\Sale;
+use App\Domain\Sales\Policies\SalePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -39,7 +41,8 @@ class AuthServiceProvider extends ServiceProvider
         Locale::class => LocalePolicy::class,
         TourType::class => TourTypePolicy::class,
         Tour::class => TourPolicy::class,
-        Event::class => EventPolicy::class
+        Event::class => EventPolicy::class,
+        Sale::class => SalePolicy::class
     ];
 
     /**

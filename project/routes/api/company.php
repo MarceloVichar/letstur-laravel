@@ -10,6 +10,8 @@ use App\Http\Api\Controllers\Company\Records\LocaleController;
 use App\Http\Api\Controllers\Company\Records\TourTypeController;
 use App\Http\Api\Controllers\Company\Records\TourController;
 use App\Http\Api\Controllers\Company\Events\EventController;
+use App\Http\Api\Controllers\Company\Sales\SaleController;
+use App\Http\Api\Controllers\Company\Sales\ConfirmSaleController;
 use Illuminate\Support\Facades\Route;
 
 return [
@@ -24,5 +26,8 @@ return [
     Route::apiResource('locales', LocaleController::class),
     Route::apiResource('tour-types', TourTypeController::class),
     Route::apiResource('tours', TourController::class),
-    Route::apiResource('events', EventController::class)
+    Route::apiResource('events', EventController::class),
+
+    Route::apiResource('sales', SaleController::class),
+    Route::put('sales/{sale}/confirm', ConfirmSaleController::class),
 ];

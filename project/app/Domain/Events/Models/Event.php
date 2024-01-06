@@ -7,6 +7,7 @@ use App\Domain\Records\Models\Driver;
 use App\Domain\Records\Models\Tour;
 use App\Domain\Records\Models\TourGuide;
 use App\Domain\Records\Models\Vehicle;
+use App\Domain\Sales\Models\Sale;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,5 +51,11 @@ class Event extends Model
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
+    }
+
+    public function sales() {
+        return $this->belongsToMany(Sale::class, 'events_sales', 'event_id', 'sale_id')
+            ->withPivot('quantity', 'total_value_cents', 'passengers')
+            ->withTimestamps();
     }
 }
