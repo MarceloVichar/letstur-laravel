@@ -10,6 +10,7 @@ use App\Domain\Sales\Actions\Sale\DetachAllEventsAction;
 use App\Domain\Sales\Actions\Sale\SaleData;
 use App\Domain\Sales\Actions\Sale\SaleInfoData;
 use App\Domain\Sales\Actions\Sale\UpdateSaleAction;
+use App\Domain\Sales\Actions\Sale\UpdateSaleTotalValueAction;
 use App\Domain\Sales\Models\Sale;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,8 @@ class UpdateSaleStrategy
 
             $this->attachEventSales($data->eventSales->toArray(), $sale);
 
+            $sale = $this->updateSaleTotalValue($sale);
+
             DB::commit();
 
             return $sale;
@@ -42,6 +45,12 @@ class UpdateSaleStrategy
     {
         return app(UpdateSaleAction::class)
             ->execute($sale, $data);
+    }
+
+    private function updateSaleTotalValue(Sale $sale): Sale
+    {
+        return app(UpdateSaleTotalValueAction::class)
+            ->execute($sale);
     }
 
     private function attachEventSales(array $eventSales, Sale $sale): void

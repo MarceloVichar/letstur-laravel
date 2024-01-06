@@ -50,7 +50,8 @@ class PermissionsAndRoles
             'tour-types' => static::crud(),
             'tours' => static::crud(),
             'events' => static::crud(),
-            'sales' => static::crud(),
+            'sales' => static::crud()
+                ->push(['confirm']),
         ]);
     }
 

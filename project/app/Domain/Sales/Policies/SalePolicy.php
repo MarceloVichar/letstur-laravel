@@ -49,4 +49,13 @@ class SalePolicy extends UserCompanyPolicy
     {
         return $this->checkUserCompany($user, $sale, 'sales delete');
     }
+
+    /**
+     * Determine whether the user can confirm the model.
+     */
+    public function confirm(User $user, Sale $sale): bool
+    {
+        return $sale->status === SaleStatusEnum::PENDING &&
+            $this->checkUserCompany($user, $sale, 'sales confirm');
+    }
 }
