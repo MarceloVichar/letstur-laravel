@@ -13,7 +13,7 @@ class UpdateUserCompany extends Controller
 {
     public function __invoke(CompanyRequest $request)
     {
-        $company = Company::find(current_user()->company_id);
+        $company = current_user()->company()->first();
 
         $this->authorize('update', $company);
 
@@ -22,6 +22,6 @@ class UpdateUserCompany extends Controller
         $updatedCompany = app(UpdateCompanyAction::class)
             ->execute($company, $data);
 
-        return CompanyResource::make($updatedCompany);
+        return response()->json(CompanyResource::make($updatedCompany), 200);
     }
 }

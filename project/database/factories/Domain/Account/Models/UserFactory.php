@@ -48,20 +48,20 @@ class UserFactory extends Factory
         });
     }
 
-    public function companyAdmin()
-    {
-        return $this->afterCreating(function (User $user) {
-            $user->assignRole(RoleEnum::COMPANY_ADMIN);
-            $user->company_id = Company::factory()->create()->id;
-            $user->save();
-        });
-    }
+    public function companyAdmin($companyId = null)
+{
+    return $this->afterCreating(function (User $user) use ($companyId) {
+        $user->assignRole(RoleEnum::COMPANY_ADMIN);
+        $user->company_id = $companyId ?? Company::factory()->create()->id;
+        $user->save();
+    });
+}
 
-    public function companyOperator()
+    public function companyOperator($companyId = null)
     {
-        return $this->afterCreating(function (User $user) {
+        return $this->afterCreating(function (User $user) use ($companyId) {
             $user->assignRole(RoleEnum::COMPANY_OPERATOR);
-            $user->company_id = Company::factory()->create()->id;
+            $user->company_id = $companyId ?? Company::factory()->create()->id;
             $user->save();
         });
     }

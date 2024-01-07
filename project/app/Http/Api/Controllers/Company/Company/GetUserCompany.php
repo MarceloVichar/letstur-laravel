@@ -10,11 +10,10 @@ class GetUserCompany extends Controller
 {
     public function __invoke()
     {
-
-        $company = Company::find(current_user()->company_id);
-
+        $company = current_user()->company()->first();
+        
         $this->authorize('view', $company);
 
-        return CompanyResource::make($company);
+        return response()->json(CompanyResource::make($company), 200);
     }
 }

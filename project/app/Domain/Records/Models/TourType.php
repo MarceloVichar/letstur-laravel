@@ -3,6 +3,7 @@
 namespace App\Domain\Records\Models;
 
 use App\Domain\Account\Models\Company;
+use Database\Factories\Domain\Records\Models\TourTypeFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,6 +19,11 @@ class TourType extends Model
         'color',
         'company_id',
     ];
+
+    protected static function newFactory()
+    {
+        return TourTypeFactory::new();
+    }
 
     public function company()
     {

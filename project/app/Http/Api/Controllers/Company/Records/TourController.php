@@ -40,7 +40,7 @@ class TourController extends ResourceController
 
         $tour->loadMissing(['locale', 'tourType']);
 
-        return TourResource::make($tour);
+        return response()->json(TourResource::make($tour), 200);
     }
 
     public function store(TourRequest $request)
@@ -55,7 +55,7 @@ class TourController extends ResourceController
         $tour = app(CreateTourAction::class)
             ->execute($data);
 
-        return TourResource::make($tour);
+        return response()->json(TourResource::make($tour), 201);
     }
 
     public function update(TourRequest $request, Tour $tour)
@@ -67,7 +67,7 @@ class TourController extends ResourceController
         $tour = app(UpdateTourAction::class)
             ->execute($tour, $data);
 
-        return TourResource::make($tour);
+        return response()->json(TourResource::make($tour), 200);
     }
 
     public function destroy(Tour $tour)

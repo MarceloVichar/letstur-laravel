@@ -42,7 +42,7 @@ class UserController extends ResourceController
             'company',
         ]);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function store(UserRequest $request)
@@ -57,7 +57,7 @@ class UserController extends ResourceController
         $user = app(CreateUserAction::class)
             ->execute($data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 201);
     }
 
     public function update(UserRequest $request, User $user)
@@ -69,7 +69,7 @@ class UserController extends ResourceController
         $user = app(UpdateUserAction::class)
             ->execute($user, $data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function destroy(User $user)

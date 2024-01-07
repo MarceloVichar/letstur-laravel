@@ -35,7 +35,7 @@ class TourGuideController extends ResourceController
     {
         $this->authorize('view', $tourGuide);
 
-        return TourGuideResource::make($tourGuide);
+        return response()->json(TourGuideResource::make($tourGuide), 200);
     }
 
     public function store(TourGuideRequest $request)
@@ -50,7 +50,7 @@ class TourGuideController extends ResourceController
         $tourGuide = app(CreateTourGuideAction::class)
             ->execute($data);
 
-        return TourGuideResource::make($tourGuide);
+        return response()->json(TourGuideResource::make($tourGuide), 201);
     }
 
     public function update(TourGuideRequest $request, TourGuide $tourGuide)
@@ -62,7 +62,7 @@ class TourGuideController extends ResourceController
         $tourGuide = app(UpdateTourGuideAction::class)
             ->execute($tourGuide, $data);
 
-        return TourGuideResource::make($tourGuide);
+        return response()->json(TourGuideResource::make($tourGuide), 200);
     }
 
     public function destroy(TourGuide $tourGuide)

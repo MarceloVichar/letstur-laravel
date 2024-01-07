@@ -24,7 +24,7 @@ class VehicleData extends Data
         public string|Optional $model,
 
         #[Required, IntegerType]
-        public string|Optional $numberOfSeats,
+        public int|Optional $numberOfSeats,
 
         #[Required, StringType]
         public string|Optional $cnhTypeRequired,
