@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
             ]);
 
         User::factory()
-            ->company_admin()
+            ->companyAdmin()
             ->create([
                 'name' => 'Company admin',
                 'email' => 'company_admin@letsgrow.com.br',
@@ -32,7 +32,7 @@ class UsersSeeder extends Seeder
             ]);
 
         User::factory()
-            ->company_operator()
+            ->companyOperator()
             ->create([
                 'name' => 'Company operator',
                 'email' => 'company_operator@letsgrow.com.br',

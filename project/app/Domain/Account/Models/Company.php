@@ -2,6 +2,7 @@
 
 namespace App\Domain\Account\Models;
 
+use Database\Factories\Domain\Account\Models\CompanyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,11 @@ class Company extends Model
         'secondary_phone',
         'email',
     ];
+
+    protected static function newFactory()
+    {
+        return CompanyFactory::new();
+    }
 
     public function users()
     {
