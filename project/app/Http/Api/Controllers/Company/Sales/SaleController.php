@@ -43,7 +43,7 @@ class SaleController extends ResourceController
             'events',
         ]);
 
-        return SaleResource::make($sale);
+        return response()->json(SaleResource::make($sale), 200);
     }
 
     public function store(SaleRequest $request)
@@ -59,7 +59,7 @@ class SaleController extends ResourceController
         $sale = app(CreateSaleStrategy::class)
             ->execute($data);
 
-        return SaleResource::make($sale);
+        return response()->json(SaleResource::make($sale), 201);
     }
 
     public function update(SaleRequest $request, Sale $sale)
@@ -75,7 +75,7 @@ class SaleController extends ResourceController
         $sale = app(UpdateSaleStrategy::class)
             ->execute($sale, $data);
 
-        return SaleResource::make($sale);
+        return response()->json(SaleResource::make($sale), 200);
     }
 
     public function destroy(Sale $sale)

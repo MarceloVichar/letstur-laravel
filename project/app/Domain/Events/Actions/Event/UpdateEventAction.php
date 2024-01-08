@@ -14,8 +14,8 @@ class UpdateEventAction
             'vehicleId' => 'vehicle_id',
             'tourGuideId' => 'tour_guide_id',
             'tourId' => 'tour_id',
-            'departureDate' => 'departure_date',
-            'arrivalDate' => 'arrival_date',
+            'departureDateTime' => 'departure_date_time',
+            'arrivalDateTime' => 'arrival_date_time',
         ]);
 
         return tap($event)

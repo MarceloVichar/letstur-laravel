@@ -26,5 +26,6 @@ class AttachEventSaleAction
         $dataArray['total_value_cents'] = $eventTotalValueCents * $dataArray['quantity'];
         $dataArray['passengers'] = json_encode($dataArray['passengers']);
         $sale->events()->attach($event->id, $dataArray);
+        $sale->refresh();
     }
 }

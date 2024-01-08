@@ -49,7 +49,7 @@ class EventController extends ResourceController
             'tour'
         ]);
 
-        return EventResource::make($event);
+        return response()->json(EventResource::make($event), 200);
     }
 
     public function store(EventRequest $request)
@@ -64,7 +64,7 @@ class EventController extends ResourceController
         $event = app(CreateEventAction::class)
             ->execute($data);
 
-        return EventResource::make($event);
+        return response()->json(EventResource::make($event), 201);
     }
 
     public function update(EventRequest $request, Event $event)
@@ -76,7 +76,7 @@ class EventController extends ResourceController
         $event = app(UpdateEventAction::class)
             ->execute($event, $data);
 
-        return EventResource::make($event);
+        return response()->json(EventResource::make($event), 200);
     }
 
     public function destroy(Event $event)
