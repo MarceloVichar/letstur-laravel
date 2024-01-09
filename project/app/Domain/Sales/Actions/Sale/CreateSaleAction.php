@@ -18,7 +18,7 @@ class CreateSaleAction
 
         $dataArray['status'] = SaleStatusEnum::PENDING;
 
-        $dataArray = $this->convertCustomerData($dataArray, $data);
+        $dataArray = $this->convertCustomerData($dataArray);
 
         return app(Sale::class)
             ->create($dataArray);

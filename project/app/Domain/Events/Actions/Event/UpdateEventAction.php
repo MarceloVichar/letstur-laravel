@@ -18,7 +18,8 @@ class UpdateEventAction
             'arrivalDateTime' => 'arrival_date_time',
         ]);
 
-        return tap($event)
-            ->update($dataArray);
+        $event->update($dataArray);
+
+        return $event;
     }
 }
