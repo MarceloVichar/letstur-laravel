@@ -28,7 +28,7 @@ class UserData extends Data
         public array|Optional $roles,
 
         #[Nullable, IntegerType, Exists('companies', 'id')]
-        public int|Optional $companyId
+        public ?int $companyId
     ) {
     }
 }

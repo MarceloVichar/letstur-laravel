@@ -25,11 +25,11 @@ class CompanyRequest extends FormRequest
         $rules = [
             'name' => 'required|string|min:2|max:255',
             'tradingName' => 'required|string|min:2|max:255',
-            'cnpj' => 'required|string|min:2|max:255',
-            'ie' => 'sometimes|string|min:2|max:255',
+            'cnpj' => 'required|string|digits:14',
+            'ie' => 'nullable|max:255',
             'email' => ['required', 'email', 'string'],
-            'phone' => 'required|string|min:2|max:255',
-            'secondaryPhone' => 'sometimes|string|min:2|max:255',
+            'phone' => 'required|string|digits_between:10,11',
+            'secondaryPhone' => 'nullable|string|digits_between:10,11',
         ];
 
         if ($this->isMethod('post')) {

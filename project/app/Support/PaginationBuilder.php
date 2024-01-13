@@ -5,11 +5,12 @@ namespace App\Support;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\QueryBuilder\QueryBuilder;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class PaginationBuilder extends QueryBuilder implements Responsable
 {
-    public const PER_PAGE_DEFAULT = 20;
+    public const PER_PAGE_DEFAULT = 10;
 
     private $perPage = self::PER_PAGE_DEFAULT;
 
@@ -28,9 +29,9 @@ class PaginationBuilder extends QueryBuilder implements Responsable
     private function getPerPage()
     {
         $perPage = \Request::input('perPage', $this->perPage);
-        if ($perPage > 100 || $perPage < 1) {
+        if ($perPage > 200 || $perPage < 1) {
             $message = "Per page parameter [{$perPage}] out of the range.";
-            throw new UnauthorizedHttpException($message);
+            throw new BadRequestException($message);
         }
 
         return $perPage;

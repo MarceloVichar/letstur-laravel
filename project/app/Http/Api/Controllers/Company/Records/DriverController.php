@@ -58,7 +58,10 @@ class DriverController extends ResourceController
     {
         $this->authorize('update', $driver);
 
-        $data = DriverData::validateAndCreate($request->validated());
+        $data = DriverData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $driver = app(UpdateDriverAction::class)
             ->execute($driver, $data);

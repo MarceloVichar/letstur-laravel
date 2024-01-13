@@ -21,9 +21,6 @@ class CompanyData extends Data
         #[Required, StringType]
         public string|Optional $cnpj,
 
-        #[Nullable, StringType]
-        public string|Optional $ie,
-
         #[Required, StringType, Email]
         public string|Optional $email,
 
@@ -31,7 +28,10 @@ class CompanyData extends Data
         public string|Optional $phone,
 
         #[Nullable, StringType]
-        public string|Optional $secondaryPhone,
+        public ?string $ie = null,
+
+        #[Nullable, StringType]
+        public ?string $secondaryPhone = null,
     ) {
     }
 }

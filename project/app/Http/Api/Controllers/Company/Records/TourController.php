@@ -62,7 +62,10 @@ class TourController extends ResourceController
     {
         $this->authorize('update', $tour);
 
-        $data = TourData::validateAndCreate($request->validated());
+        $data = TourData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $tour = app(UpdateTourAction::class)
             ->execute($tour, $data);

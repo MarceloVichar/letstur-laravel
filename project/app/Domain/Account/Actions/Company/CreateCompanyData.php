@@ -22,7 +22,7 @@ class CreateCompanyData extends Data
         public string|Optional $cnpj,
 
         #[Nullable, StringType]
-        public string|Optional $ie,
+        public ?string $ie,
 
         #[Required, StringType, Email]
         public string|Optional $email,
@@ -31,7 +31,7 @@ class CreateCompanyData extends Data
         public string|Optional $phone,
 
         #[Nullable, StringType]
-        public string|Optional $secondaryPhone,
+        public ?string $secondaryPhone,
 
         #[Required, StringType]
         public string|Optional $ownerName,

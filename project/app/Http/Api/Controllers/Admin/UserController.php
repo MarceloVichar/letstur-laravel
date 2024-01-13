@@ -22,7 +22,8 @@ class UserController extends ResourceController
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
-                AllowedFilter::partial('role', 'roles.name'),
+                AllowedFilter::exact('role', 'roles.name'),
+                AllowedFilter::exact('company', 'companies.id'),
             ])
             ->with(['roles', 'company'])
             ->allowedSorts(['name', 'email', 'created_at'])

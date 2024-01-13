@@ -71,7 +71,10 @@ class EventController extends ResourceController
     {
         $this->authorize('update', $event);
 
-        $data = EventData::validateAndCreate($request->validated());
+        $data = EventData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $event = app(UpdateEventAction::class)
             ->execute($event, $data);

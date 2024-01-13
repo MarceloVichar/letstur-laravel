@@ -64,7 +64,10 @@ class UserController extends ResourceController
     {
         $this->authorize('update', $user);
 
-        $data = UserData::validateAndCreate($request->validated());
+        $data = UserData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $user = app(UpdateUserAction::class)
             ->execute($user, $data);

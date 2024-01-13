@@ -58,7 +58,10 @@ class VehicleController extends ResourceController
     {
         $this->authorize('update', $vehicle);
 
-        $data = VehicleData::validateAndCreate($request->validated());
+        $data = VehicleData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $vehicle = app(UpdateVehicleAction::class)
             ->execute($vehicle, $data);

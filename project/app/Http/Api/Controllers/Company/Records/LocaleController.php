@@ -57,7 +57,10 @@ class LocaleController extends ResourceController
     {
         $this->authorize('update', $locale);
 
-        $data = LocaleData::validateAndCreate($request->validated());
+        $data = LocaleData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $locale = app(UpdateLocaleAction::class)
             ->execute($locale, $data);
