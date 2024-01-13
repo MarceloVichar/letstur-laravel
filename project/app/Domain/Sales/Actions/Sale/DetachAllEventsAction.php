@@ -8,6 +8,7 @@ class DetachAllEventsAction
 {
     public function execute(Sale $sale)
     {
-        return $sale->events()->detach();
+        $sale->events()->detach();
+        $sale->refresh();
     }
 }

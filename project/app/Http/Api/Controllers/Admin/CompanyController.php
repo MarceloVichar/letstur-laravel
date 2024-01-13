@@ -36,7 +36,7 @@ class CompanyController extends ResourceController
     {
         $this->authorize('view', $company);
 
-        return CompanyResource::make($company);
+        return response()->json(CompanyResource::make($company), 200);
     }
 
     public function store(CompanyRequest $request)
@@ -48,7 +48,7 @@ class CompanyController extends ResourceController
         $company = app(CreateCompanyActionStrategy::class)
             ->execute($data);
 
-        return CompanyResource::make($company);
+        return response()->json(CompanyResource::make($company), 201);
     }
 
     public function update(CompanyRequest $request, Company $company)
@@ -60,7 +60,7 @@ class CompanyController extends ResourceController
         $company = app(UpdateCompanyAction::class)
             ->execute($company, $data);
 
-        return CompanyResource::make($company);
+        return response()->json(CompanyResource::make($company), 200);
     }
 
     public function destroy(Company $company)

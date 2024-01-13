@@ -46,13 +46,13 @@ class CreateCompanyActionStrategy
         return null;
     }
 
-    private function createCompany(CompanyData $data): Company
+    function createCompany(CompanyData $data): Company
     {
         return app(CreateCompanyAction::class)
             ->execute($data);
     }
 
-    private function createCompanyOwner(UserData $data): User
+    function createCompanyOwner(UserData $data): User
     {
 
         return app(CreateUserAction::class)

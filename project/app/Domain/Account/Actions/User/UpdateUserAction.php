@@ -21,7 +21,10 @@ class UpdateUserAction
             $user->syncRoles($roles);
         }
 
-        return tap($user)
-            ->update($dataArray);
+        $user->refresh();
+
+        $user->update($dataArray);
+
+        return $user;
     }
 }

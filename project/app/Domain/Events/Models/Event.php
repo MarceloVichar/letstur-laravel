@@ -8,6 +8,7 @@ use App\Domain\Records\Models\Tour;
 use App\Domain\Records\Models\TourGuide;
 use App\Domain\Records\Models\Vehicle;
 use App\Domain\Sales\Models\Sale;
+use Database\Factories\Domain\Events\Models\EventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,6 +28,11 @@ class Event extends Model
         'driver_id',
         'company_id',
     ];
+
+    protected static function newFactory()
+    {
+        return EventFactory::new();
+    }
 
     public function company()
     {

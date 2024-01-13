@@ -36,7 +36,7 @@ class DriverController extends ResourceController
     {
         $this->authorize('view', $driver);
 
-        return DriverResource::make($driver);
+        return response()->json(DriverResource::make($driver), 200);
     }
 
     public function store(DriverRequest $request)
@@ -51,19 +51,22 @@ class DriverController extends ResourceController
         $driver = app(CreateDriverAction::class)
             ->execute($data);
 
-        return DriverResource::make($driver);
+        return response()->json(DriverResource::make($driver), 201);
     }
 
     public function update(DriverRequest $request, Driver $driver)
     {
         $this->authorize('update', $driver);
 
-        $data = DriverData::validateAndCreate($request->validated());
+        $data = DriverData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $driver = app(UpdateDriverAction::class)
             ->execute($driver, $data);
 
-        return DriverResource::make($driver);
+        return response()->json(DriverResource::make($driver), 200);
     }
 
     public function destroy(Driver $driver)

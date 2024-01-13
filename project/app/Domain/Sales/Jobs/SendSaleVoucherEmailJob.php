@@ -16,7 +16,7 @@ class SendSaleVoucherEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $sale;
+    public $sale;
 
     /**
      * Create a new job instance.

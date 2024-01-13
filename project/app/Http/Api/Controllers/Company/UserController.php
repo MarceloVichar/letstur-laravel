@@ -42,7 +42,7 @@ class UserController extends ResourceController
             'company',
         ]);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function store(UserRequest $request)
@@ -57,19 +57,22 @@ class UserController extends ResourceController
         $user = app(CreateUserAction::class)
             ->execute($data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 201);
     }
 
     public function update(UserRequest $request, User $user)
     {
         $this->authorize('update', $user);
 
-        $data = UserData::validateAndCreate($request->validated());
+        $data = UserData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $user = app(UpdateUserAction::class)
             ->execute($user, $data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function destroy(User $user)

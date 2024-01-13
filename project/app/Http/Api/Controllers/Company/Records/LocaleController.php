@@ -35,7 +35,7 @@ class LocaleController extends ResourceController
     {
         $this->authorize('view', $locale);
 
-        return LocaleResource::make($locale);
+        return response()->json(LocaleResource::make($locale), 200);
     }
 
     public function store(LocaleRequest $request)
@@ -50,19 +50,22 @@ class LocaleController extends ResourceController
         $locale = app(CreateLocaleAction::class)
             ->execute($data);
 
-        return LocaleResource::make($locale);
+        return response()->json(LocaleResource::make($locale), 201);
     }
 
     public function update(LocaleRequest $request, Locale $locale)
     {
         $this->authorize('update', $locale);
 
-        $data = LocaleData::validateAndCreate($request->validated());
+        $data = LocaleData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $locale = app(UpdateLocaleAction::class)
             ->execute($locale, $data);
 
-        return LocaleResource::make($locale);
+        return response()->json(LocaleResource::make($locale), 200);
     }
 
     public function destroy(Locale $locale)

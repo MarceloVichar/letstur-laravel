@@ -5,6 +5,7 @@ namespace App\Domain\Sales\Models;
 use App\Domain\Account\Models\Company;
 use App\Domain\Account\Models\User;
 use App\Domain\Events\Models\Event;
+use Database\Factories\Domain\Sales\Models\SaleFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +26,11 @@ class Sale extends Model
         'customer_phone',
         'customer_document',
     ];
+
+     protected static function newFactory()
+    {
+        return SaleFactory::new();
+    }
 
     public function company()
     {

@@ -9,8 +9,9 @@ class UpdateLocaleAction
     public function execute(Locale $locale, LocaleData $data): Locale
     {
         $dataArray = array_keys_as($data->toArray(), [
-            'cnhType' => 'cnh_type',
-            'dateOfBirth' => 'date_of_birth',
+            'zipCode' => 'zip_code',
+            'responsibleName' => 'responsible_name',
+            'responsiblePhone' => 'responsible_phone',
             'companyId' => 'company_id',
         ]);
 

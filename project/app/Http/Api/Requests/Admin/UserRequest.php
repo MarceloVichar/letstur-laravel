@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
                 'string',
                 Rule::unique('users', 'email'),
             ],
-            'password' => 'required|min:2|max:255|confirmed',
+            'password' => 'required|min:8|max:255|confirmed',
             'roles' => [
                 'required',
                 'array',
@@ -43,9 +43,9 @@ class UserRequest extends FormRequest
                 (new ValidEnumValue(RoleEnum::class))->strict(),
             ],
             'companyId' => [
-                'sometimes',
                 'integer',
                 'exists:companies,id',
+                in_array(RoleEnum::ADMIN, $this->input('roles', []), true) ? 'nullable' : 'required',
             ],
         ];
 
@@ -57,15 +57,6 @@ class UserRequest extends FormRequest
                     ->ignore($this->route('user')->id),
             ];
             $rules['password'] = 'nullable|string|confirmed';
-            $rules['roles'] = [
-                'nullable',
-                'array',
-            ];
-            $rules['roles.*'] = [
-                'nullable',
-                'string',
-                (new ValidEnumValue(RoleEnum::class))->strict(),
-            ];
         }
 
         return $rules;

@@ -19,7 +19,7 @@ class CreateEventAction
             'arrivalDateTime' => 'arrival_date_time',
         ]);
 
-        $vehicle = Vehicle::find($dataArray['vehicle_id']);
+        $vehicle = app(Vehicle::class)->find($dataArray['vehicle_id']);
 
         $dataArray['total_seats'] = $vehicle['number_of_seats'];
         $dataArray['available_seats'] = $vehicle['number_of_seats'];

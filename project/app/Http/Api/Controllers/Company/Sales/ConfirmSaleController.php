@@ -20,7 +20,7 @@ class ConfirmSaleController extends Controller
             $sale = app(ConfirmSaleAction::class)
                 ->execute($sale);
 
-            SendSaleVoucherEmailJob::dispatch($sale);
+            SendSaleVoucherEmailJob::dispatch($sale)->onQueue('emails');
         } catch (\Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),

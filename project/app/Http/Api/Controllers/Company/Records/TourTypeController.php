@@ -35,7 +35,7 @@ class TourTypeController extends ResourceController
     {
         $this->authorize('view', $tourType);
 
-        return TourTypeResource::make($tourType);
+        return response()->json(TourTypeResource::make($tourType), 200);
     }
 
     public function store(TourTypeRequest $request)
@@ -50,19 +50,22 @@ class TourTypeController extends ResourceController
         $tourType = app(CreateTourTypeAction::class)
             ->execute($data);
 
-        return TourTypeResource::make($tourType);
+        return response()->json(TourTypeResource::make($tourType), 201);
     }
 
     public function update(TourTypeRequest $request, TourType $tourType)
     {
         $this->authorize('update', $tourType);
 
-        $data = TourTypeData::validateAndCreate($request->validated());
+        $data = TourTypeData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $tourType = app(UpdateTourTypeAction::class)
             ->execute($tourType, $data);
 
-        return TourTypeResource::make($tourType);
+        return response()->json(TourTypeResource::make($tourType), 200);
     }
 
     public function destroy(TourType $tourType)

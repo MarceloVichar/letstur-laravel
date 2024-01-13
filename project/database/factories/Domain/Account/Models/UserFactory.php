@@ -3,6 +3,7 @@
 namespace Database\Factories\Domain\Account\Models;
 
 use App\Domain\Account\Enums\RoleEnum;
+use App\Domain\Account\Models\Company;
 use App\Domain\Account\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,8 +26,8 @@ class UserFactory extends Factory
             'id' => $this->faker->unique()->randomNumber(4),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'password' => bcrypt('12345678'),
+            'remember_token' => Str::random(10)
         ];
     }
 
@@ -47,17 +48,21 @@ class UserFactory extends Factory
         });
     }
 
-    public function company_admin()
-    {
-        return $this->afterCreating(function (User $user) {
-            $user->assignRole(RoleEnum::COMPANY_ADMIN);
-        });
-    }
+    public function companyAdmin($companyId = null)
+{
+    return $this->afterCreating(function (User $user) use ($companyId) {
+        $user->assignRole(RoleEnum::COMPANY_ADMIN);
+        $user->company_id = $companyId ?? Company::factory()->create()->id;
+        $user->save();
+    });
+}
 
-    public function company_operator()
+    public function companyOperator($companyId = null)
     {
-        return $this->afterCreating(function (User $user) {
+        return $this->afterCreating(function (User $user) use ($companyId) {
             $user->assignRole(RoleEnum::COMPANY_OPERATOR);
+            $user->company_id = $companyId ?? Company::factory()->create()->id;
+            $user->save();
         });
     }
 }

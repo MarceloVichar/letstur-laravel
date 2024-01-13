@@ -36,7 +36,7 @@ class VehicleController extends ResourceController
     {
         $this->authorize('view', $vehicle);
 
-        return VehicleResource::make($vehicle);
+        return response()->json(VehicleResource::make($vehicle), 200);
     }
 
     public function store(VehicleRequest $request)
@@ -51,19 +51,22 @@ class VehicleController extends ResourceController
         $vehicle = app(CreateVehicleAction::class)
             ->execute($data);
 
-        return VehicleResource::make($vehicle);
+        return response()->json(VehicleResource::make($vehicle), 201);
     }
 
     public function update(VehicleRequest $request, Vehicle $vehicle)
     {
         $this->authorize('update', $vehicle);
 
-        $data = VehicleData::validateAndCreate($request->validated());
+        $data = VehicleData::validateAndCreate([
+            'companyId' => current_user()->company_id,
+            ...$request->validated(),
+        ]);
 
         $vehicle = app(UpdateVehicleAction::class)
             ->execute($vehicle, $data);
 
-        return VehicleResource::make($vehicle);
+        return response()->json(VehicleResource::make($vehicle), 200);
     }
 
     public function destroy(Vehicle $vehicle)

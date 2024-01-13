@@ -22,7 +22,8 @@ class UserController extends ResourceController
             ->allowedFilters([
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
-                AllowedFilter::partial('role', 'roles.name'),
+                AllowedFilter::exact('role', 'roles.name'),
+                AllowedFilter::exact('company', 'companies.id'),
             ])
             ->with(['roles', 'company'])
             ->allowedSorts(['name', 'email', 'created_at'])
@@ -39,7 +40,7 @@ class UserController extends ResourceController
             'company',
         ]);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function store(UserRequest $request)
@@ -51,7 +52,7 @@ class UserController extends ResourceController
         $user = app(CreateUserAction::class)
             ->execute($data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 201);
     }
 
     public function update(UserRequest $request, User $user)
@@ -63,7 +64,7 @@ class UserController extends ResourceController
         $user = app(UpdateUserAction::class)
             ->execute($user, $data);
 
-        return UserResource::make($user);
+        return response()->json(UserResource::make($user), 200);
     }
 
     public function destroy(User $user)

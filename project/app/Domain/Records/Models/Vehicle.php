@@ -3,6 +3,7 @@
 namespace App\Domain\Records\Models;
 
 use App\Domain\Account\Models\Company;
+use Database\Factories\Domain\Records\Models\VehicleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,6 +24,11 @@ class Vehicle extends Model
         'owner_email',
         'company_id',
     ];
+
+    protected static function newFactory()
+    {
+        return VehicleFactory::new();
+    }
 
     public function company()
     {
