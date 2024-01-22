@@ -15,6 +15,7 @@ class TourResource extends JsonResource
             'roundTrip' => $this->round_trip,
             'priceCents' => $this->price_cents,
             'note' => $this->note,
+            'color' => $this->tourType->color,
             'localeId' => $this->locale_id,
             'tourTypeId' => $this->tour_type_id,
             'locale' => LocaleResource::make($this->whenLoaded('locale')),

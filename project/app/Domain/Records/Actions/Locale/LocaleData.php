@@ -26,13 +26,13 @@ class LocaleData extends Data
         public string|Optional $street,
 
         #[Nullable, StringType]
-        public string|Optional $number,
+        public ?string $number,
 
         #[Nullable, StringType]
-        public string|Optional $complement,
+        public ?string $complement,
 
         #[Nullable, StringType]
-        public string|Optional $district,
+        public ?string $district,
 
         #[Required, StringType]
         public string|Optional $city,

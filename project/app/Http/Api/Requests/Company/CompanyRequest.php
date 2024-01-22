@@ -24,11 +24,11 @@ class CompanyRequest extends FormRequest
         return [
             'name' => 'required|string|min:2|max:255',
             'tradingName' => 'required|string|min:2|max:255',
-            'cnpj' => 'required|string|min:2|max:255',
-            'ie' => 'sometimes|string|min:2|max:255',
+            'cnpj' => 'required|string|digits:14',
+            'ie' => 'nullable|string|min:2|max:255',
             'email' => ['required', 'email', 'string'],
-            'phone' => 'required|string|min:2|max:255',
-            'secondaryPhone' => 'sometimes|string|min:2|max:255',
+            'phone' => 'required|digits_between:10,11',
+            'secondaryPhone' => 'nullable|digits_between:10,11',
         ];
     }
 }

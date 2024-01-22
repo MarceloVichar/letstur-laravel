@@ -24,7 +24,7 @@ class TourTypeController extends ResourceController
         return pagination($tourTypes)
             ->allowedFilters([
                 AllowedFilter::partial('name'),
-                AllowedFilter::partial('email'),
+                AllowedFilter::exact('isTransfer', 'is_transfer'),
             ])
             ->allowedSorts(['name', 'email', 'created_at'])
             ->defaultSort('created_at')

@@ -31,7 +31,7 @@ class PaginationBuilder extends QueryBuilder implements Responsable
         $perPage = \Request::input('perPage', $this->perPage);
         if ($perPage > 200 || $perPage < 1) {
             $message = "Per page parameter [{$perPage}] out of the range.";
-            throw new BadRequestException($message);
+            throw new UnauthorizedHttpException($message);
         }
 
         return $perPage;

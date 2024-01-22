@@ -25,11 +25,11 @@ class LocaleRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:2|max:255',
-            'zipCode' => 'required|string|min:8|max:8',
+            'zipCode' => 'nullable|string|min:8|max:8',
             'street' => 'required|string|min:2|max:255',
-            'number' => 'sometimes|string|min:1|max:255',
-            'complement' => 'sometimes|string|min:2|max:255',
-            'district' => 'sometimes|string|min:2|max:255',
+            'number' => 'nullable|string|min:1|max:255',
+            'complement' => 'nullable|string|min:2|max:255',
+            'district' => 'nullable|string|min:2|max:255',
             'city' => 'required|string|min:2|max:255',
             'uf' => 'required|string|min:2|max:2',
             'responsibleName' => 'required|string|min:2|max:255',

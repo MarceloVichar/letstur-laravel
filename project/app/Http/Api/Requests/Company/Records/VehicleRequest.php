@@ -25,17 +25,17 @@ class VehicleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'licensePlate' => 'required|string|min:2|max:255',
+            'licensePlate' => 'required|string|regex:/^[a-zA-Z]{3}\d[a-zA-Z0-9]\d{2}$/',
             'type' => [
                 'required',
                 'string',
                 (new ValidEnumValue(VehicleTypeEnum::class))->strict(),
             ],
             'model' => 'required|string|min:2|max:255',
-            'numberOfSeats' => 'required|integer',
+            'numberOfSeats' => 'required|integer|min:1|max:150',
             'ownerName' => 'required|string|min:2|max:255',
-            'ownerDocument' => 'required|string|min:2|max:255',
-            'ownerPhone' => 'required|string|min:2|max:255',
+            'ownerDocument' => 'required|string|digits_between:11,14',
+            'ownerPhone' => 'required|string|digits_between:10,11',
             'ownerEmail' => ['required', 'email', 'string'],
             'cnhTypeRequired' => [
                 'required',

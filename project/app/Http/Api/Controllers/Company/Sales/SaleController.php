@@ -2,11 +2,14 @@
 
 namespace App\Http\Api\Controllers\Company\Sales;
 
+use App\Domain\Account\Enums\RoleEnum;
 use App\Domain\Sales\Actions\Sale\SaleData;
 use App\Domain\Sales\Models\Sale;
 use App\Domain\Sales\Strategies\Sale\CreateSaleStrategy;
 use App\Domain\Sales\Strategies\Sale\DeleteSaleStrategy;
 use App\Domain\Sales\Strategies\Sale\UpdateSaleStrategy;
+use App\Domain\Shared\Filters\EndDateFilter;
+use App\Domain\Shared\Filters\StartDateFilter;
 use App\Http\Api\Requests\Company\Sales\SaleRequest;
 use App\Http\Api\Resources\Company\Sales\SaleResource;
 use App\Http\Shared\Controllers\ResourceController;
@@ -21,15 +24,20 @@ class SaleController extends ResourceController
         $sales = app(Sale::class)
             ->where('company_id', current_user()->company_id);
 
+        if(current_user()->hasRole(RoleEnum::COMPANY_OPERATOR)){
+            $sales = $sales->where('seller_id', current_user()->id);
+        }
+
         return pagination($sales)
             ->allowedFilters([
-                AllowedFilter::partial('customer_name'),
-                AllowedFilter::partial('customer_email'),
-                AllowedFilter::partial('customer_document'),
+                AllowedFilter::partial('customer', 'customer_name'),
+                AllowedFilter::custom('start_date', new StartDateFilter()),
+                AllowedFilter::custom('end_date', new EndDateFilter()),
+                AllowedFilter::exact('status')
             ])
             ->with(['seller'])
             ->allowedSorts(['created_at'])
-            ->defaultSort('created_at')
+            ->defaultSort('-created_at')
             ->resource(SaleResource::class);
     }
 
