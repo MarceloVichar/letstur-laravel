@@ -32,6 +32,7 @@ class UpdateCompanyActionTest extends TestCaseUnit
                 'email' => 'company@test.com',
                 'phone' => '1234567890',
                 'secondary_phone' => '1234567890',
+                'ie' => null,
             ])
             ->willReturn(false);
 

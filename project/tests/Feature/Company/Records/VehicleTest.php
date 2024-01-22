@@ -71,14 +71,14 @@ class VehicleTest extends TestCaseFeature
     public function test_should_create_vehicle_when_valid_data()
     {
         $response = $this->postJson($this->controllerAction('store'), [
-            'licensePlate' => 'ABC-1234',
+            'licensePlate' => 'ABC1234',
             'type' => VehicleTypeEnum::BUS,
             'model' => 'Teste',
             'numberOfSeats' => 42,
             'cnhTypeRequired' => CnhTypesEnum::D,
             'ownerName' => 'Teste',
-            'ownerDocument' => '123456789',
-            'ownerPhone' => '123456789',
+            'ownerDocument' => '12345678900',
+            'ownerPhone' => '1234567890',
             'ownerEmail' => 'email@email.com',
         ])
             ->assertCreated()
@@ -86,14 +86,14 @@ class VehicleTest extends TestCaseFeature
 
         $vehicle = Vehicle::find($response->offsetGet('id'));
 
-        $this->assertEquals('ABC-1234', $vehicle->license_plate);
+        $this->assertEquals('ABC1234', $vehicle->license_plate);
         $this->assertEquals(VehicleTypeEnum::BUS, $vehicle->type);
         $this->assertEquals('Teste', $vehicle->model);
         $this->assertEquals(42, $vehicle->number_of_seats);
         $this->assertEquals(CnhTypesEnum::D, $vehicle->cnh_type_required);
         $this->assertEquals('Teste', $vehicle->owner_name);
-        $this->assertEquals('123456789', $vehicle->owner_document);
-        $this->assertEquals('123456789', $vehicle->owner_phone);
+        $this->assertEquals('12345678900', $vehicle->owner_document);
+        $this->assertEquals('1234567890', $vehicle->owner_phone);
         $this->assertEquals('email@email.com', $vehicle->owner_email);
         $this->assertEquals($this->currentUser->company_id, $vehicle->company_id);
     }
@@ -112,28 +112,28 @@ class VehicleTest extends TestCaseFeature
             ]);
 
         $this->putJson($this->controllerAction('update', $vehicle->id), [
-            'licensePlate' => 'ABC-1234',
+            'licensePlate' => 'ABC1234',
             'type' => VehicleTypeEnum::BUS,
             'model' => 'Teste',
             'numberOfSeats' => 42,
             'cnhTypeRequired' => CnhTypesEnum::D,
             'ownerName' => 'Teste',
-            'ownerDocument' => '123456789',
-            'ownerPhone' => '123456789',
+            'ownerDocument' => '12345678954',
+            'ownerPhone' => '1234567849',
             'ownerEmail' => 'email@email.com',
         ])
             ->assertOk()
             ->assertJsonStructure($this->getFormatResourceStructure());
 
         $vehicle->refresh();
-        $this->assertEquals('ABC-1234', $vehicle->license_plate);
+        $this->assertEquals('ABC1234', $vehicle->license_plate);
         $this->assertEquals(VehicleTypeEnum::BUS, $vehicle->type);
         $this->assertEquals('Teste', $vehicle->model);
         $this->assertEquals(42, $vehicle->number_of_seats);
         $this->assertEquals(CnhTypesEnum::D, $vehicle->cnh_type_required);
         $this->assertEquals('Teste', $vehicle->owner_name);
-        $this->assertEquals('123456789', $vehicle->owner_document);
-        $this->assertEquals('123456789', $vehicle->owner_phone);
+        $this->assertEquals('12345678954', $vehicle->owner_document);
+        $this->assertEquals('1234567849', $vehicle->owner_phone);
         $this->assertEquals('email@email.com', $vehicle->owner_email);
         $this->assertEquals($this->currentUser->company_id, $vehicle->company_id);
     }
@@ -155,14 +155,14 @@ class VehicleTest extends TestCaseFeature
             ->create();
 
         $this->putJson($this->controllerAction('update', $vehicle->id), [
-            'licensePlate' => 'ABC-1234',
+            'licensePlate' => 'ABC1234',
             'type' => VehicleTypeEnum::BUS,
             'model' => 'Teste',
             'numberOfSeats' => 42,
             'cnhTypeRequired' => CnhTypesEnum::D,
             'ownerName' => 'Teste',
-            'ownerDocument' => '123456789',
-            'ownerPhone' => '123456789',
+            'ownerDocument' => '12345678976',
+            'ownerPhone' => '1234567896',
             'ownerEmail' => 'email@email.com',
         ])
             ->assertForbidden();

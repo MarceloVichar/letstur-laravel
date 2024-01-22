@@ -43,6 +43,7 @@ class UserRequest extends FormRequest
                 (new ValidEnumValue(RoleEnum::class))->strict(),
             ],
             'companyId' => [
+                'nullable',
                 'integer',
                 'exists:companies,id',
                 in_array(RoleEnum::ADMIN, $this->input('roles', []), true) ? 'nullable' : 'required',
