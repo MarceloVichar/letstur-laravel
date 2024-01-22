@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Records;
 
 use App\Domain\Records\Actions\TourGuide\CreateTourGuideAction;
 use App\Domain\Records\Actions\TourGuide\DeleteTourGuideAction;
-use App\Domain\Records\Actions\TourGuide\UpdateTourGuideAction;
 use App\Domain\Records\Actions\TourGuide\TourGuideData;
+use App\Domain\Records\Actions\TourGuide\UpdateTourGuideAction;
 use App\Domain\Records\Models\TourGuide;
 use App\Http\Api\Requests\Company\Records\TourGuideRequest;
 use App\Http\Api\Resources\Company\Records\TourGuideResource;

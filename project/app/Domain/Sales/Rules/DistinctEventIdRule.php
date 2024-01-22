@@ -24,6 +24,6 @@ class DistinctEventIdRule implements ValidationRule
         $eventIds = array_column($this->eventSales, 'eventId');
         if (count($eventIds) !== count(array_unique($eventIds))) {
             $fail($this->message());
-        };
+        }
     }
 }

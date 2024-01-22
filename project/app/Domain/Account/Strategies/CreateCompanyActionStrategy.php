@@ -2,13 +2,13 @@
 
 namespace App\Domain\Account\Strategies;
 
-use App\Domain\Account\Actions\Company\CreateCompanyData;
 use App\Domain\Account\Actions\Company\CompanyData;
 use App\Domain\Account\Actions\Company\CreateCompanyAction;
-use App\Domain\Account\Models\Company;
-use App\Domain\Account\Enums\RoleEnum;
+use App\Domain\Account\Actions\Company\CreateCompanyData;
 use App\Domain\Account\Actions\User\CreateUserAction;
 use App\Domain\Account\Actions\User\UserData;
+use App\Domain\Account\Enums\RoleEnum;
+use App\Domain\Account\Models\Company;
 use App\Domain\Account\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +28,7 @@ class CreateCompanyActionStrategy
                 'email' => $data->ownerEmail,
                 'password' => $data->ownerPassword,
                 'roles' => [
-                   RoleEnum::COMPANY_ADMIN,
+                    RoleEnum::COMPANY_ADMIN,
                 ],
                 'companyId' => $company->id,
             ]);
@@ -46,13 +46,13 @@ class CreateCompanyActionStrategy
         return null;
     }
 
-    function createCompany(CompanyData $data): Company
+    public function createCompany(CompanyData $data): Company
     {
         return app(CreateCompanyAction::class)
             ->execute($data);
     }
 
-    function createCompanyOwner(UserData $data): User
+    public function createCompanyOwner(UserData $data): User
     {
 
         return app(CreateUserAction::class)

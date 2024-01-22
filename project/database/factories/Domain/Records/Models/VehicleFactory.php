@@ -30,7 +30,7 @@ class VehicleFactory extends Factory
             'owner_document' => $this->faker->randomNumber(9),
             'owner_phone' => $this->faker->phoneNumber(),
             'owner_email' => $this->faker->email(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

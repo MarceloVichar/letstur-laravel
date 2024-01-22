@@ -35,7 +35,7 @@ class EventFactory extends Factory
             'vehicle_id' => Vehicle::factory(),
             'tour_id' => Tour::factory(),
             'driver_id' => Driver::factory(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

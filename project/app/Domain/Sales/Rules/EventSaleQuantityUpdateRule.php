@@ -10,6 +10,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class EventSaleQuantityUpdateRule implements ValidationRule
 {
     private $eventId;
+
     private $sale;
 
     public function __construct($eventId, Sale $sale)

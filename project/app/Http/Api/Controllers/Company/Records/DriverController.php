@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Records;
 
 use App\Domain\Records\Actions\Driver\CreateDriverAction;
 use App\Domain\Records\Actions\Driver\DeleteDriverAction;
-use App\Domain\Records\Actions\Driver\UpdateDriverAction;
 use App\Domain\Records\Actions\Driver\DriverData;
+use App\Domain\Records\Actions\Driver\UpdateDriverAction;
 use App\Domain\Records\Models\Driver;
 use App\Http\Api\Requests\Company\Records\DriverRequest;
 use App\Http\Api\Resources\Company\Records\DriverResource;

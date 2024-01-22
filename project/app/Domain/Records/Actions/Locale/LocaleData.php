@@ -2,9 +2,6 @@
 
 namespace App\Domain\Records\Actions\Locale;
 
-use Spatie\LaravelData\Attributes\Validation\Date;
-use Spatie\LaravelData\Attributes\Validation\DateFormat;
-use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Attributes\Validation\IntegerType;
 use Spatie\LaravelData\Attributes\Validation\Nullable;
@@ -47,8 +44,7 @@ class LocaleData extends Data
         public string|Optional $responsiblePhone,
 
         #[Nullable, IntegerType, Exists('companies', 'id')]
-        public int|Optional    $companyId
-    )
-    {
+        public int|Optional $companyId
+    ) {
     }
 }

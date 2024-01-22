@@ -20,7 +20,7 @@ class GetCompanyTest extends TestCaseFeature
     {
         return [
             'id', 'name', 'tradingName', 'cnpj', 'ie',
-            'phone', 'email', 'createdAt', 'updatedAt'
+            'phone', 'email', 'createdAt', 'updatedAt',
         ];
     }
 

@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Records;
 
 use App\Domain\Records\Actions\Locale\CreateLocaleAction;
 use App\Domain\Records\Actions\Locale\DeleteLocaleAction;
-use App\Domain\Records\Actions\Locale\UpdateLocaleAction;
 use App\Domain\Records\Actions\Locale\LocaleData;
+use App\Domain\Records\Actions\Locale\UpdateLocaleAction;
 use App\Domain\Records\Models\Locale;
 use App\Http\Api\Requests\Company\Records\LocaleRequest;
 use App\Http\Api\Resources\Company\Records\LocaleResource;

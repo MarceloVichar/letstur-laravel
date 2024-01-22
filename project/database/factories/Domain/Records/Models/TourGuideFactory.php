@@ -23,7 +23,7 @@ class TourGuideFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->safeEmail(),
             'document' => $this->faker->randomNumber(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

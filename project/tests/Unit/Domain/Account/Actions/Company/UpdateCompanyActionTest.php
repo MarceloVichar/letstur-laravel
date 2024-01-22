@@ -3,7 +3,6 @@
 namespace Tests\Unit\Domain\Account\Actions\Company;
 
 use App\Domain\Account\Actions\Company\CompanyData;
-use App\Domain\Account\Actions\Company\CreateCompanyAction;
 use App\Domain\Account\Actions\Company\UpdateCompanyAction;
 use App\Domain\Account\Models\Company;
 use Tests\Cases\TestCaseUnit;

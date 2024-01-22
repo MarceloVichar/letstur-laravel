@@ -20,20 +20,19 @@ class EventData extends Data
         public string|Optional $arrivalDateTime,
 
         #[Nullable, IntegerType, Exists('companies', 'id')]
-        public int|Optional    $companyId,
+        public int|Optional $companyId,
 
         #[Required, IntegerType, Exists('drivers', 'id')]
-        public int|Optional    $driverId,
+        public int|Optional $driverId,
 
         #[Required, IntegerType, Exists('tours', 'id')]
-        public int|Optional    $tourId,
+        public int|Optional $tourId,
 
         #[Required, IntegerType, Exists('tour_guides', 'id')]
-        public int|Optional    $tourGuideId,
+        public int|Optional $tourGuideId,
 
         #[Required, IntegerType, Exists('vehicles', 'id')]
-        public int|Optional    $vehicleId
-    )
-    {
+        public int|Optional $vehicleId
+    ) {
     }
 }

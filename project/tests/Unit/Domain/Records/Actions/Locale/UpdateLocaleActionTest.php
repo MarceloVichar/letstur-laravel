@@ -4,7 +4,6 @@ namespace Tests\Unit\Domain\Records\Actions\Locale;
 
 use App\Domain\Records\Actions\Locale\LocaleData;
 use App\Domain\Records\Actions\Locale\UpdateLocaleAction;
-use App\Domain\Records\Enums\CnhTypesEnum;
 use App\Domain\Records\Models\Locale;
 use Mockery\MockInterface;
 use Tests\Cases\TestCaseUnit;

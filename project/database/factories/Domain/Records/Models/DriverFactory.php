@@ -27,7 +27,7 @@ class DriverFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'date_of_birth' => $this->faker->dateTime(),
             'email' => $this->faker->safeEmail(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

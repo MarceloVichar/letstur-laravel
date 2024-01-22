@@ -32,8 +32,6 @@ class FormRequest extends BaseFormRequest
      * Register a custom rule in the class.
      *
      * If the method matches the pattern validate*, then it will be registered like an validator extension
-     *
-     * @param  string  $method
      */
     private function registerCustomRule(string $method)
     {

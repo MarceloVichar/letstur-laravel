@@ -11,6 +11,7 @@ class UpdateAvailableSeatsAction
         $event->available_seats = $event->total_seats - $this->sales($event);
         $event->update();
         $event->refresh();
+
         return $event;
     }
 

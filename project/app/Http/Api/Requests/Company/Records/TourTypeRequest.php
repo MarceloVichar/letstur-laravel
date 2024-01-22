@@ -25,7 +25,7 @@ class TourTypeRequest extends FormRequest
             'name' => 'required|string|min:2|max:255',
             'color' => [
                 'nullable',
-                'regex:/^#([a-f0-9]{6}|[a-f0-9]{3})$/i'
+                'regex:/^#([a-f0-9]{6}|[a-f0-9]{3})$/i',
             ],
             'isExclusive' => 'required|boolean',
             'isTransfer' => 'required|boolean',

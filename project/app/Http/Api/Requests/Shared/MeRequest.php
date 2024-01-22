@@ -30,7 +30,7 @@ class MeRequest extends FormRequest
                 'string',
                 Rule::unique('users', 'email')
                     ->ignore(current_user()->id),
-            ]
+            ],
         ];
 
         return $rules;

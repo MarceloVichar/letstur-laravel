@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Records;
 
 use App\Domain\Records\Actions\TourType\CreateTourTypeAction;
 use App\Domain\Records\Actions\TourType\DeleteTourTypeAction;
-use App\Domain\Records\Actions\TourType\UpdateTourTypeAction;
 use App\Domain\Records\Actions\TourType\TourTypeData;
+use App\Domain\Records\Actions\TourType\UpdateTourTypeAction;
 use App\Domain\Records\Models\TourType;
 use App\Http\Api\Requests\Company\Records\TourTypeRequest;
 use App\Http\Api\Resources\Company\Records\TourTypeResource;

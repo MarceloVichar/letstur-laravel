@@ -4,7 +4,6 @@ namespace App\Domain\Sales\Mail;
 
 use App\Domain\Sales\Models\Sale;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
@@ -20,14 +19,15 @@ class SaleVoucher extends Mailable
      */
     public function __construct(
         public Sale $sale,
-    ) {}
+    ) {
+    }
 
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
-//        dd($this->sale->customer_email, $this->sale->customer_name, config('mail.from.address'), config('mail.from.name'));
+        //        dd($this->sale->customer_email, $this->sale->customer_name, config('mail.from.address'), config('mail.from.name'));
         return new Envelope(
             from: new Address(config('mail.from.address'), config('mail.from.name')),
             subject: 'Sua compra foi confirmada!',

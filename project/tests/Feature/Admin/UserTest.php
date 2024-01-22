@@ -56,7 +56,7 @@ class UserTest extends TestCaseFeature
             'email' => 'email@teste.com',
             'password' => '12345678',
             'password_confirmation' => '12345678',
-            'roles' => [RoleEnum::ADMIN]
+            'roles' => [RoleEnum::ADMIN],
         ])
             ->assertCreated()
             ->assertJsonStructure($this->getFormatResourceStructure());
@@ -85,7 +85,7 @@ class UserTest extends TestCaseFeature
         $this->putJson($this->controllerAction('update', $user->id), [
             'email' => 'emailnovo@teste.com',
             'name' => 'Teste novo',
-            'roles' => [RoleEnum::ADMIN]
+            'roles' => [RoleEnum::ADMIN],
         ])
             ->assertOk()
             ->assertJsonStructure($this->getFormatResourceStructure());

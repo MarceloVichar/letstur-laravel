@@ -59,7 +59,8 @@ class Event extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
-    public function sales() {
+    public function sales()
+    {
         return $this->belongsToMany(Sale::class, 'events_sales', 'event_id', 'sale_id')
             ->withPivot('quantity', 'total_value_cents', 'passengers')
             ->withTimestamps();

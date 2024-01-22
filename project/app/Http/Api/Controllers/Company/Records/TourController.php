@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Records;
 
 use App\Domain\Records\Actions\Tour\CreateTourAction;
 use App\Domain\Records\Actions\Tour\DeleteTourAction;
-use App\Domain\Records\Actions\Tour\UpdateTourAction;
 use App\Domain\Records\Actions\Tour\TourData;
+use App\Domain\Records\Actions\Tour\UpdateTourAction;
 use App\Domain\Records\Models\Tour;
 use App\Http\Api\Requests\Company\Records\TourRequest;
 use App\Http\Api\Resources\Company\Records\TourResource;
@@ -28,7 +28,7 @@ class TourController extends ResourceController
             ])
             ->with([
                 'locale',
-                'tourType'
+                'tourType',
             ])
             ->allowedSorts(['name', 'created_at'])
             ->defaultSort('created_at')

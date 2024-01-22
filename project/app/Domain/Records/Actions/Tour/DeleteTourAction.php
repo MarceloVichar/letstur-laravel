@@ -2,7 +2,6 @@
 
 namespace App\Domain\Records\Actions\Tour;
 
-
 use App\Domain\Records\Models\Tour;
 
 class DeleteTourAction

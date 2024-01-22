@@ -11,7 +11,7 @@ class DeleteVehicleActionTest extends TestCaseUnit
 {
     public function test_should_delete_vehicle()
     {
-         $model = $this->mock(Vehicle::class, function (MockInterface $mock) {
+        $model = $this->mock(Vehicle::class, function (MockInterface $mock) {
             $mock->expects('delete')
                 ->once()
                 ->andReturnTrue();

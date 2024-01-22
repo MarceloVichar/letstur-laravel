@@ -42,7 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         TourType::class => TourTypePolicy::class,
         Tour::class => TourPolicy::class,
         Event::class => EventPolicy::class,
-        Sale::class => SalePolicy::class
+        Sale::class => SalePolicy::class,
     ];
 
     /**

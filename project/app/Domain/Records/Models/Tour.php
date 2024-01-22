@@ -22,7 +22,7 @@ class Tour extends Model
         'tour_type_id',
     ];
 
-     protected static function newFactory()
+    protected static function newFactory()
     {
         return TourFactory::new();
     }

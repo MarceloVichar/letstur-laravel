@@ -24,7 +24,7 @@ class SaleController extends ResourceController
         $sales = app(Sale::class)
             ->where('company_id', current_user()->company_id);
 
-        if(current_user()->hasRole(RoleEnum::COMPANY_OPERATOR)){
+        if (current_user()->hasRole(RoleEnum::COMPANY_OPERATOR)) {
             $sales = $sales->where('seller_id', current_user()->id);
         }
 
@@ -33,7 +33,7 @@ class SaleController extends ResourceController
                 AllowedFilter::partial('customer', 'customer_name'),
                 AllowedFilter::custom('start_date', new StartDateFilter()),
                 AllowedFilter::custom('end_date', new EndDateFilter()),
-                AllowedFilter::exact('status')
+                AllowedFilter::exact('status'),
             ])
             ->with(['seller'])
             ->allowedSorts(['created_at'])

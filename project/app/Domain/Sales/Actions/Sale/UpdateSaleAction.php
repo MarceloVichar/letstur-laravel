@@ -19,9 +19,9 @@ class UpdateSaleAction
             ->update($dataArray);
     }
 
-    function convertCustomerData($dataArray)
+    public function convertCustomerData($dataArray)
     {
-        if (!isset($dataArray['customer'])) {
+        if (! isset($dataArray['customer'])) {
             return $dataArray;
         }
         if (isset($dataArray['customer']['name'])) {

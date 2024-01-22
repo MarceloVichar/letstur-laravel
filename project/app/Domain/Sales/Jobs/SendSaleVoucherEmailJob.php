@@ -5,7 +5,6 @@ namespace App\Domain\Sales\Jobs;
 use App\Domain\Sales\Mail\SaleVoucher;
 use App\Domain\Sales\Models\Sale;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

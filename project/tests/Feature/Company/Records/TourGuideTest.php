@@ -140,7 +140,6 @@ class TourGuideTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_tour_guide()
     {
         $tourGuide = TourGuide::factory()

@@ -2,8 +2,6 @@
 
 namespace App\Http\Api\Requests\Company\Events;
 
-use App\Domain\Records\Enums\CnhTypesEnum;
-use App\Domain\Shared\Rules\ValidEnumValue;
 use App\Http\Shared\Requests\FormRequest;
 use Illuminate\Validation\Rule;
 

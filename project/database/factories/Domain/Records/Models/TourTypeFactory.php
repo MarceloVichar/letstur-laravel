@@ -3,7 +3,6 @@
 namespace Database\Factories\Domain\Records\Models;
 
 use App\Domain\Account\Models\Company;
-use App\Domain\Records\Enums\CnhTypesEnum;
 use App\Domain\Records\Models\TourType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +23,7 @@ class TourTypeFactory extends Factory
             'is_exclusive' => $this->faker->boolean(),
             'is_transfer' => $this->faker->boolean(),
             'color' => $this->faker->hexColor(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

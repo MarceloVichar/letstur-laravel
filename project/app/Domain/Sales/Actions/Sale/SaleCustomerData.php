@@ -7,23 +7,21 @@ use Spatie\LaravelData\Attributes\Validation\Nullable;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
 
 class SaleCustomerData extends Data
 {
     public function __construct(
         #[Required, StringType]
-        public string          $name,
+        public string $name,
 
         #[Required, StringType]
-        public string          $document,
+        public string $document,
 
         #[Required, StringType, Email]
-        public string          $email,
+        public string $email,
 
         #[Nullable, StringType]
         public ?string $phone,
-    )
-    {
+    ) {
     }
 }

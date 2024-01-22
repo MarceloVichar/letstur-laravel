@@ -171,7 +171,6 @@ class LocaleTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_locale()
     {
         $locale = Locale::factory()

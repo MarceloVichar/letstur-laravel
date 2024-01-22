@@ -12,8 +12,8 @@ abstract class UserCompanyPolicy
     {
         $hasPermission = $user->can($permission);
 
-        if (!$user->hasRole(RoleEnum::ADMIN)) {
-            return $hasPermission && ($model->$field === $user->company_id);
+        if (! $user->hasRole(RoleEnum::ADMIN)) {
+            return $hasPermission && ($user->company_id === $model->$field);
         }
 
         return $hasPermission;

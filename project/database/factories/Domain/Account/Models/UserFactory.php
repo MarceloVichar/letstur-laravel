@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => bcrypt('12345678'),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
         ];
     }
 
@@ -36,7 +36,7 @@ class UserFactory extends Factory
      */
     public function unverified()
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
@@ -49,13 +49,13 @@ class UserFactory extends Factory
     }
 
     public function companyAdmin($companyId = null)
-{
-    return $this->afterCreating(function (User $user) use ($companyId) {
-        $user->assignRole(RoleEnum::COMPANY_ADMIN);
-        $user->company_id = $companyId ?? Company::factory()->create()->id;
-        $user->save();
-    });
-}
+    {
+        return $this->afterCreating(function (User $user) use ($companyId) {
+            $user->assignRole(RoleEnum::COMPANY_ADMIN);
+            $user->company_id = $companyId ?? Company::factory()->create()->id;
+            $user->save();
+        });
+    }
 
     public function companyOperator($companyId = null)
     {
