@@ -10,6 +10,13 @@ on:
       - release/**
       - refactor/**
   pull_request:
+    branches:
+      - main
+      - develop
+      - feature/**
+      - hotfix/**
+      - release/**
+      - refactor/**
     paths:
       - '**.php'
       - 'phpunit.xml'
