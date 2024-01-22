@@ -63,7 +63,7 @@ jobs:
         run: php artisan test --testsuite Feature
         env:
           DB_HOST: localhost
-          DB_PORT: ${{ job.services.postgres.ports[5432] }}
+          DB_PORT: ${{ job.services.postgres-test.ports[5432] }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
