@@ -15,16 +15,22 @@ class SaleTestData extends TestCaseFeature
 
         $this->loginAsCompanyAdmin();
 
-        $this->event1 = Event::factory()
-            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
+        $this->vehicle = Vehicle::factory()
             ->create([
                 'company_id' => $this->currentUser->company_id,
+                'number_of_seats' => 10,
+            ]);
+
+        $this->event1 = Event::factory()
+            ->create([
+                'company_id' => $this->currentUser->company_id,
+                'vehicle_id' => $this->vehicle->id,
             ]);
 
         $this->event2 = Event::factory()
-            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
             ->create([
                 'company_id' => $this->currentUser->company_id,
+                'vehicle_id' => $this->vehicle->id,
             ]);
     }
 
