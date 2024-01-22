@@ -31,4 +31,4 @@ jobs:
           verboseMode: true
           testMode: true
           configPath: "project/pint.json"
-          pintVersion: 1.13
+          pintVersion: 1.13.10
