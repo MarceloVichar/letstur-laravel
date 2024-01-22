@@ -13,13 +13,14 @@ class AttachEventSaleAction
             'eventId' => 'event_id',
         ]);
 
+
         $eventTotalValueCents = $event?->tour?->price_cents;
 
         if ($event->available_seats < $dataArray['quantity']) {
             throw new \Exception('Error: Quantity of seats not available.');
         }
 
-        if (!$eventTotalValueCents) {
+        if (!$eventTotalValueCents && $eventTotalValueCents !== 0) {
             throw new \Exception('Error: Event price not found.');
         }
 

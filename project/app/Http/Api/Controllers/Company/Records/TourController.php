@@ -23,6 +23,7 @@ class TourController extends ResourceController
 
         return pagination($tours)
             ->allowedFilters([
+                AllowedFilter::exact('id'),
                 AllowedFilter::partial('name'),
             ])
             ->with([

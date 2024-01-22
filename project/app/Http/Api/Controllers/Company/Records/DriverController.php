@@ -23,6 +23,7 @@ class DriverController extends ResourceController
 
         return pagination($drivers)
             ->allowedFilters([
+                AllowedFilter::exact('id'),
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
                 AllowedFilter::partial('cnh_type'),

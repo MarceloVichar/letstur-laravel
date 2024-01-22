@@ -26,9 +26,9 @@ class TourRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:2|max:255',
-            'priceCents' => 'required|integer|min:0',
+            'priceCents' => 'required|integer|min:1',
             'roundTrip' => 'required|integer|min:0',
-            'note' => 'sometimes|string|min:2|max:255',
+            'note' => 'nullable|string|min:2|max:255',
             'localeId' => [
                 'required',
                 Rule::exists('locales', 'id')

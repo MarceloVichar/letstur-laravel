@@ -22,7 +22,7 @@ class SaleCustomerData extends Data
         public string          $email,
 
         #[Nullable, StringType]
-        public string|Optional $phone,
+        public ?string $phone,
     )
     {
     }

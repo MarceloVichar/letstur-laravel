@@ -7,6 +7,8 @@ use App\Domain\Events\Actions\Event\DeleteEventAction;
 use App\Domain\Events\Actions\Event\UpdateEventAction;
 use App\Domain\Events\Actions\Event\EventData;
 use App\Domain\Events\Models\Event;
+use App\Domain\Shared\Filters\EndDateFilter;
+use App\Domain\Shared\Filters\StartDateFilter;
 use App\Http\Api\Requests\Company\Events\EventRequest;
 use App\Http\Api\Resources\Company\Events\EventResource;
 use App\Http\Shared\Controllers\ResourceController;
@@ -20,12 +22,16 @@ class EventController extends ResourceController
 
         $events = app(Event::class)
             ->where('company_id', current_user()->company_id);
-
+        
         return pagination($events)
             ->allowedFilters([
-                AllowedFilter::partial('driver', 'drivers.name'),
-                AllowedFilter::partial('vehicle', 'vehicles.name'),
-                AllowedFilter::partial('tour_guide', 'tourGuides.name'),
+                AllowedFilter::exact('id'),
+                AllowedFilter::partial('tour', 'tour.name'),
+                AllowedFilter::partial('driver', 'driver.name'),
+                AllowedFilter::partial('vehicle', 'vehicle.model'),
+                AllowedFilter::partial('tour_guide', 'tourGuide.name'),
+                AllowedFilter::custom('departure_start_date', new StartDateFilter('departure_date_time')),
+                AllowedFilter::custom('departure_end_date', new EndDateFilter('departure_date_time')),
             ])
             ->with([
                 'driver',

@@ -23,6 +23,7 @@ class TourGuideController extends ResourceController
 
         return pagination($tourGuides)
             ->allowedFilters([
+                AllowedFilter::exact('id'),
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('email'),
             ])

@@ -31,10 +31,10 @@ class DriverRequest extends FormRequest
                 'string',
                 (new ValidEnumValue(CnhTypesEnum::class))->strict(),
             ],
-            'document' => 'sometimes|string|min:2|max:255',
+            'document' => 'required|string|digits_between:11,14',
             'email' => ['required', 'email', 'string'],
-            'phone' => 'required|string|min:2|max:255',
-            'dateOfBirth' => 'sometimes|string|date_format:Y-m-d',
+            'phone' => 'required|string|digits_between:10,11',
+            'dateOfBirth' => 'required|string|date_format:Y-m-d|before:' . now()->subYears(18)->format('Y-m-d'),
         ];
     }
 }

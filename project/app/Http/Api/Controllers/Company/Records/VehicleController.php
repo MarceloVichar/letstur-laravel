@@ -23,6 +23,7 @@ class VehicleController extends ResourceController
 
         return pagination($vehicles)
             ->allowedFilters([
+                AllowedFilter::exact('id'),
                 AllowedFilter::partial('model'),
                 AllowedFilter::partial('owner_document'),
                 AllowedFilter::partial('cnh_type_required'),

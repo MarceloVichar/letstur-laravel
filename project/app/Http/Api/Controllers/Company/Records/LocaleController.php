@@ -23,6 +23,7 @@ class LocaleController extends ResourceController
 
         return pagination($locales)
             ->allowedFilters([
+                AllowedFilter::exact('id'),
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('street'),
             ])

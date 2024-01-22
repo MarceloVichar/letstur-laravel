@@ -31,7 +31,7 @@ class SaleRequest extends FormRequest
             'customer.name' => 'required|string|min:2|max:255',
             'customer.email' => 'required|email|string|min:2|max:255',
             'customer.document' => 'required|string|min:2|max:255',
-            'customer.phone' => 'sometimes|string|min:2|max:255',
+            'customer.phone' => 'nullable|string|min:2|max:255',
             'eventSales' => [
                 'required',
                 'array',

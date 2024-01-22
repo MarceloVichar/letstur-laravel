@@ -4,6 +4,7 @@ namespace App\Domain\Events\Actions\Event;
 
 use App\Domain\Events\Models\Event;
 use App\Domain\Records\Models\Vehicle;
+use Carbon\Carbon;
 
 class CreateEventAction
 {
@@ -23,6 +24,8 @@ class CreateEventAction
 
         $dataArray['total_seats'] = $vehicle['number_of_seats'];
         $dataArray['available_seats'] = $vehicle['number_of_seats'];
+        $dataArray['departure_date_time'] = Carbon::parse($dataArray['departure_date_time'])->toDateTimeString();
+        $dataArray['arrival_date_time'] = Carbon::parse($dataArray['arrival_date_time'])->toDateTimeString();
 
         return app(Event::class)
             ->create($dataArray);

@@ -26,7 +26,7 @@ class TourData extends Data
         public int|Optional $priceCents,
 
         #[Nullable, StringType]
-        public string|Optional $note,
+        public ?string $note,
 
         #[Required, StringType, Email]
         public string|Optional $email,

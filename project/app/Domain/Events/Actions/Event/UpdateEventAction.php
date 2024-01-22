@@ -3,6 +3,7 @@
 namespace App\Domain\Events\Actions\Event;
 
 use App\Domain\Events\Models\Event;
+use Carbon\Carbon;
 
 class UpdateEventAction
 {
@@ -17,6 +18,9 @@ class UpdateEventAction
             'departureDateTime' => 'departure_date_time',
             'arrivalDateTime' => 'arrival_date_time',
         ]);
+
+        $dataArray['departure_date_time'] = Carbon::parse($dataArray['departure_date_time'])->toDateTimeString();
+        $dataArray['arrival_date_time'] = Carbon::parse($dataArray['arrival_date_time'])->toDateTimeString();
 
         $event->update($dataArray);
 
