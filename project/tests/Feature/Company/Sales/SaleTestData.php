@@ -3,6 +3,7 @@
 namespace Tests\Feature\Company\Sales;
 
 use App\Domain\Events\Models\Event;
+use App\Domain\Records\Models\Vehicle;
 use App\Domain\Sales\Models\Sale;
 use Tests\Cases\TestCaseFeature;
 
@@ -15,11 +16,13 @@ class SaleTestData extends TestCaseFeature
         $this->loginAsCompanyAdmin();
 
         $this->event1 = Event::factory()
+            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
             ->create([
                 'company_id' => $this->currentUser->company_id,
             ]);
 
         $this->event2 = Event::factory()
+            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
             ->create([
                 'company_id' => $this->currentUser->company_id,
             ]);

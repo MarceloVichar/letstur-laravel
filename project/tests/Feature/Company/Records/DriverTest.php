@@ -74,8 +74,8 @@ class DriverTest extends TestCaseFeature
             'email' => 'driver@email.com',
             'cnh' => '123456789',
             'cnhType' => CnhTypesEnum::B,
-            'document' => '123456789',
-            'phone' => '123456789',
+            'document' => '12345678900',
+            'phone' => '1234567890',
             'dateOfBirth' => '1990-01-01',
         ])
             ->assertCreated()
@@ -87,8 +87,8 @@ class DriverTest extends TestCaseFeature
         $this->assertEquals('driver@email.com', $driver->email);
         $this->assertEquals('123456789', $driver->cnh);
         $this->assertEquals(CnhTypesEnum::B, $driver->cnh_type);
-        $this->assertEquals('123456789', $driver->document);
-        $this->assertEquals('123456789', $driver->phone);
+        $this->assertEquals('12345678900', $driver->document);
+        $this->assertEquals('1234567890', $driver->phone);
         $this->assertEquals('1990-01-01', $driver->date_of_birth);
         $this->assertEquals($this->currentUser->company_id, $driver->company_id);
     }
@@ -111,8 +111,8 @@ class DriverTest extends TestCaseFeature
             'email' => 'driver@email.com',
             'cnh' => '123456789',
             'cnhType' => CnhTypesEnum::B,
-            'document' => '123456789',
-            'phone' => '123456789',
+            'document' => '12345678900',
+            'phone' => '1234567890',
             'dateOfBirth' => '1990-01-01',
         ])
             ->assertOk()
@@ -123,8 +123,8 @@ class DriverTest extends TestCaseFeature
         $this->assertEquals('driver@email.com', $driver->email);
         $this->assertEquals('123456789', $driver->cnh);
         $this->assertEquals(CnhTypesEnum::B, $driver->cnh_type);
-        $this->assertEquals('123456789', $driver->document);
-        $this->assertEquals('123456789', $driver->phone);
+        $this->assertEquals('12345678900', $driver->document);
+        $this->assertEquals('1234567890', $driver->phone);
         $this->assertEquals('1990-01-01', $driver->date_of_birth);
         $this->assertEquals($this->currentUser->company_id, $driver->company_id);
     }
@@ -150,8 +150,8 @@ class DriverTest extends TestCaseFeature
             'email' => 'driver@email.com',
             'cnh' => '123456789',
             'cnhType' => CnhTypesEnum::B,
-            'document' => '123456789',
-            'phone' => '123456789',
+            'document' => '12345678900',
+            'phone' => '1234567890',
             'dateOfBirth' => '1990-01-01',
         ])
             ->assertForbidden();

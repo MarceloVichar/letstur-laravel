@@ -32,6 +32,7 @@ class UpdateTourActionTest extends TestCaseUnit
                         'tour_type_id' => 1,
                         'locale_id' => 1,
                         'company_id' => 1,
+                        'note' => null
                     ], $data);
 
                     return true;
