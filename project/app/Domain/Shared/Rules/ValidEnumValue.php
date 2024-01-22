@@ -33,7 +33,7 @@ class ValidEnumValue implements ValidationRule
     public function __construct(string $enumClass)
     {
         if (! is_subclass_of($enumClass, Enum::class)) {
-            $message = 'Enum class ['.$enumClass.'] must be an instance of '.Enum::class;
+            $message = 'Enum class [' . $enumClass . '] must be an instance of ' . Enum::class;
             throw new InvalidArgumentException($message);
         }
 
@@ -63,7 +63,7 @@ class ValidEnumValue implements ValidationRule
     {
         $enumClass = $this->enumClass;
         if (! $enumClass::isValidValue($value, $this->strict)) {
-            $fail($this->failMessage ?? 'The '.$attribute.' must be a valid value.');
+            $fail($this->failMessage ?? 'The ' . $attribute . ' must be a valid value.');
         }
     }
 }

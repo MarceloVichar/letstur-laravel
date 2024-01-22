@@ -43,7 +43,7 @@ class UserRequest extends FormRequest
                 (new ValidEnumValue(RoleEnum::class))->strict(),
                 function ($attribute, $value, $fail) {
                     if ($value === RoleEnum::ADMIN) {
-                        $fail($attribute.' is invalid.');
+                        $fail($attribute . ' is invalid.');
                     }
                 },
             ],
@@ -67,7 +67,7 @@ class UserRequest extends FormRequest
                 (new ValidEnumValue(RoleEnum::class))->strict(),
                 function ($attribute, $value, $fail) {
                     if ($value === RoleEnum::ADMIN) {
-                        $fail($attribute.' is invalid.');
+                        $fail($attribute . ' is invalid.');
                     }
                 },
             ];
