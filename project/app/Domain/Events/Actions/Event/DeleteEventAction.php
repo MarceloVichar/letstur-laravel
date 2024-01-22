@@ -2,7 +2,6 @@
 
 namespace App\Domain\Events\Actions\Event;
 
-
 use App\Domain\Events\Models\Event;
 
 class DeleteEventAction

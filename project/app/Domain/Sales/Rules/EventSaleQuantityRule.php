@@ -24,7 +24,7 @@ class EventSaleQuantityRule implements ValidationRule
     {
         $event = Event::find($this->eventId);
 
-        if (!$event || $value < 1 || $value > $event->available_seats) {
+        if (! $event || $value < 1 || $value > $event->available_seats) {
             $fail($this->message());
         }
     }

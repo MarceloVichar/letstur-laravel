@@ -11,7 +11,7 @@ class DeleteDriverActionTest extends TestCaseUnit
 {
     public function test_should_delete_driver()
     {
-         $model = $this->mock(Driver::class, function (MockInterface $mock) {
+        $model = $this->mock(Driver::class, function (MockInterface $mock) {
             $mock->expects('delete')
                 ->once()
                 ->andReturnTrue();

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Company\Sales;
 
-use App\Domain\Events\Models\Event;
 use App\Domain\Sales\Enums\SaleStatusEnum;
 use App\Domain\Sales\Jobs\SendSaleVoucherEmailJob;
 use App\Domain\Sales\Models\Sale;
@@ -22,7 +21,7 @@ class SaleTest extends SaleTestData
     private function getFormatResourceStructure()
     {
         return [
-            'id', 'customer', 'status', 'voucher', 'totalValueCents', 'sellerId', 'companyId', 'createdAt', 'updatedAt'
+            'id', 'customer', 'status', 'voucher', 'totalValueCents', 'sellerId', 'companyId', 'createdAt', 'updatedAt',
         ];
     }
 
@@ -134,7 +133,6 @@ class SaleTest extends SaleTestData
         $this->putJson($this->controllerAction('update', $sale->id), $this->getRequestData())
             ->assertForbidden();
     }
-
 
     public function test_should_delete_sale()
     {

@@ -2,7 +2,6 @@
 /**
  * All files in this folder will be included in the application.
  */
-
 if (! function_exists('current_user')) {
     /**
      * Retorna uma instância do usuário corrente.
@@ -36,8 +35,6 @@ if (! function_exists('output_date_format')) {
 if (! function_exists('pagination')) {
     /**
      * Retorna uma instância do builder de paginação.
-     *
-     * @return \App\Support\PaginationBuilder
      */
     function pagination($subject): App\Support\PaginationBuilder
     {
@@ -51,7 +48,6 @@ if (! function_exists('array_keys_as')) {
      *
      * @param  array  $data  Array a ser renomeado
      * @param  array  $keysFromTo  Chaves a serem renomeadas
-     * @return array
      */
     function array_keys_as(array $data, array $keysFromTo): array
     {

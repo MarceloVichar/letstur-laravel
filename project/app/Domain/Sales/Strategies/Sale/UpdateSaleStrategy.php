@@ -32,7 +32,6 @@ class UpdateSaleStrategy
 
             DB::commit();
 
-
             return $sale;
 
         } catch (\Exception $exception) {

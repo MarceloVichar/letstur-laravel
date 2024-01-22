@@ -11,7 +11,7 @@ class DeleteLocaleActionTest extends TestCaseUnit
 {
     public function test_should_delete_locale()
     {
-         $model = $this->mock(Locale::class, function (MockInterface $mock) {
+        $model = $this->mock(Locale::class, function (MockInterface $mock) {
             $mock->expects('delete')
                 ->once()
                 ->andReturnTrue();

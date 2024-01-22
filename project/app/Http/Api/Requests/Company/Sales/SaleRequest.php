@@ -36,14 +36,14 @@ class SaleRequest extends FormRequest
                 'required',
                 'array',
                 'min:1',
-                new DistinctEventIdRule($this->input('eventSales'))
+                new DistinctEventIdRule($this->input('eventSales')),
             ],
             'eventSales.*.eventId' => [
                 'required',
                 'integer',
                 Rule::exists('events', 'id')
                     ->where('company_id', current_user()->company_id)
-                    ->withoutTrashed()
+                    ->withoutTrashed(),
             ],
             'eventSales.*.passengers' => [
                 'required',
@@ -63,7 +63,7 @@ class SaleRequest extends FormRequest
         return $rules;
     }
 
-    function eventSaleRangeQuantity()
+    public function eventSaleRangeQuantity()
     {
         return function ($attribute, $value, $fail) {
             $segments = explode('.', $attribute);
@@ -76,7 +76,7 @@ class SaleRequest extends FormRequest
         };
     }
 
-    function eventSaleRangeQuantityUpdate()
+    public function eventSaleRangeQuantityUpdate()
     {
         return function ($attribute, $value, $fail) {
             $segments = explode('.', $attribute);
@@ -89,7 +89,7 @@ class SaleRequest extends FormRequest
         };
     }
 
-    function eventSalePassengersQuantity()
+    public function eventSalePassengersQuantity()
     {
         return function ($attribute, $value, $fail) {
             $segments = explode('.', $attribute);

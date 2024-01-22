@@ -27,7 +27,7 @@ class TourFactory extends Factory
             'note' => $this->faker->text(100),
             'locale_id' => Locale::factory(),
             'tour_type_id' => TourType::factory(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

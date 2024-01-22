@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Domain\Records\Actions\Vehicle;
 
-use App\Domain\Records\Actions\Vehicle\VehicleData;
 use App\Domain\Records\Actions\Vehicle\UpdateVehicleAction;
+use App\Domain\Records\Actions\Vehicle\VehicleData;
 use App\Domain\Records\Enums\CnhTypesEnum;
 use App\Domain\Records\Enums\VehicleTypeEnum;
 use App\Domain\Records\Models\Vehicle;

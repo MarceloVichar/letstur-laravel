@@ -168,7 +168,6 @@ class VehicleTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_vehicle()
     {
         $vehicle = Vehicle::factory()

@@ -2,8 +2,8 @@
 
 namespace App\Http\Api\Controllers\Admin;
 
-use App\Domain\Account\Actions\Company\CreateCompanyData;
 use App\Domain\Account\Actions\Company\CompanyData;
+use App\Domain\Account\Actions\Company\CreateCompanyData;
 use App\Domain\Account\Actions\Company\DeleteCompanyAction;
 use App\Domain\Account\Actions\Company\UpdateCompanyAction;
 use App\Domain\Account\Models\Company;

@@ -4,8 +4,8 @@ namespace App\Http\Api\Controllers\Company\Events;
 
 use App\Domain\Events\Actions\Event\CreateEventAction;
 use App\Domain\Events\Actions\Event\DeleteEventAction;
-use App\Domain\Events\Actions\Event\UpdateEventAction;
 use App\Domain\Events\Actions\Event\EventData;
+use App\Domain\Events\Actions\Event\UpdateEventAction;
 use App\Domain\Events\Models\Event;
 use App\Domain\Shared\Filters\EndDateFilter;
 use App\Domain\Shared\Filters\StartDateFilter;
@@ -22,7 +22,7 @@ class EventController extends ResourceController
 
         $events = app(Event::class)
             ->where('company_id', current_user()->company_id);
-        
+
         return pagination($events)
             ->allowedFilters([
                 AllowedFilter::exact('id'),
@@ -37,7 +37,7 @@ class EventController extends ResourceController
                 'driver',
                 'vehicle',
                 'tourGuide',
-                'tour'
+                'tour',
             ])
             ->allowedSorts(['created_at'])
             ->defaultSort('created_at')
@@ -52,7 +52,7 @@ class EventController extends ResourceController
             'driver',
             'vehicle',
             'tourGuide',
-            'tour'
+            'tour',
         ]);
 
         return response()->json(EventResource::make($event), 200);

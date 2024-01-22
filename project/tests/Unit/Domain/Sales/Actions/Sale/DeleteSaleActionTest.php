@@ -11,7 +11,7 @@ class DeleteSaleActionTest extends TestCaseUnit
 {
     public function test_should_delete_event()
     {
-         $model = $this->mock(Sale::class, function (MockInterface $mock) {
+        $model = $this->mock(Sale::class, function (MockInterface $mock) {
             $mock->expects('delete')
                 ->once()
                 ->andReturnTrue();

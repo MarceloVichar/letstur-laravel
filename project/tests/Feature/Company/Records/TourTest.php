@@ -163,7 +163,6 @@ class TourTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_tour()
     {
         $tour = Tour::factory()

@@ -11,7 +11,7 @@ class CreateTourTypeAction
         $dataArray = array_keys_as($data->toArray(), [
             'companyId' => 'company_id',
             'isExclusive' => 'is_exclusive',
-            'isTransfer' => 'is_transfer'
+            'isTransfer' => 'is_transfer',
         ]);
 
         return app(TourType::class)

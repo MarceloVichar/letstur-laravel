@@ -9,7 +9,7 @@ class PermissionsAndRoles
 {
     public static function getRoles(): array
     {
-        $permissions = fn($key) => static::getPermissions()
+        $permissions = fn ($key) => static::getPermissions()
             ->get($key)
             ->values();
 
@@ -34,7 +34,7 @@ class PermissionsAndRoles
                 'tours' => $permissions('tours'),
                 'events' => $permissions('events'),
                 'sales' => $permissions('sales'),
-            ]
+            ],
         ];
     }
 

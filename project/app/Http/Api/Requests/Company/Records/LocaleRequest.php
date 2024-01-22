@@ -2,8 +2,6 @@
 
 namespace App\Http\Api\Requests\Company\Records;
 
-use App\Domain\Records\Enums\CnhTypesEnum;
-use App\Domain\Shared\Rules\ValidEnumValue;
 use App\Http\Shared\Requests\FormRequest;
 
 class LocaleRequest extends FormRequest

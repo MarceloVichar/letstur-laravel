@@ -4,7 +4,6 @@ namespace App\Http\Api\Controllers\Company\Company;
 
 use App\Domain\Account\Actions\Company\CompanyData;
 use App\Domain\Account\Actions\Company\UpdateCompanyAction;
-use App\Domain\Account\Models\Company;
 use App\Http\Api\Requests\Company\CompanyRequest;
 use App\Http\Api\Resources\Shared\CompanyResource;
 use App\Http\Shared\Controllers\Controller;

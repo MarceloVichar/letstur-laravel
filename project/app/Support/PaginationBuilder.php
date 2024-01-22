@@ -5,7 +5,6 @@ namespace App\Support;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Spatie\QueryBuilder\QueryBuilder;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class PaginationBuilder extends QueryBuilder implements Responsable
@@ -18,8 +17,6 @@ class PaginationBuilder extends QueryBuilder implements Responsable
 
     /**
      * Returns a instance of current class.
-     *
-     * @return self
      */
     public static function new(): self
     {
@@ -38,7 +35,6 @@ class PaginationBuilder extends QueryBuilder implements Responsable
     }
 
     /**
-     * @param  int  $perPage
      * @return $this
      */
     public function perPage(int $perPage): self

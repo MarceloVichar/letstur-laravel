@@ -70,7 +70,7 @@ class UserTest extends TestCaseFeature
             'email' => 'email@teste.com',
             'password' => '12345678',
             'password_confirmation' => '12345678',
-            'roles' => [RoleEnum::COMPANY_ADMIN]
+            'roles' => [RoleEnum::COMPANY_ADMIN],
         ])
             ->assertCreated()
             ->assertJsonStructure($this->getFormatResourceStructure());
@@ -126,7 +126,6 @@ class UserTest extends TestCaseFeature
         ])
             ->assertForbidden();
     }
-
 
     public function test_should_delete_user()
     {

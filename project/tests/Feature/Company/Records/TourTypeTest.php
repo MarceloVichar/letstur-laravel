@@ -140,7 +140,6 @@ class TourTypeTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_tour_type()
     {
         $driver = TourType::factory()

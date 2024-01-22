@@ -15,7 +15,7 @@ abstract class Enum
         }
 
         $calledClass = get_called_class();
-        if (!array_key_exists($calledClass, self::$constCacheArray)) {
+        if (! array_key_exists($calledClass, self::$constCacheArray)) {
             $reflect = new \ReflectionClass($calledClass);
             self::$constCacheArray[$calledClass] = $reflect->getConstants();
         }
@@ -55,7 +55,7 @@ abstract class Enum
 
     public static function validateValue($value, $strict = true): bool
     {
-        if (!self::isValidValue($value, $strict)) {
+        if (! self::isValidValue($value, $strict)) {
             throw new InvalidEnumValueException("Invalid enum value [$value].");
         }
 
@@ -65,11 +65,10 @@ abstract class Enum
     /**
      * Return translated value. This method may be re-writed on children enum class.
      *
-     * @param mixed $value
-     * @return string
+     * @param  mixed  $value
      */
     public static function trans($value): string
     {
-        return (string)$value;
+        return (string) $value;
     }
 }

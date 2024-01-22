@@ -2,7 +2,6 @@
 
 namespace App\Domain\Sales\Rules;
 
-use App\Domain\Events\Models\Event;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 

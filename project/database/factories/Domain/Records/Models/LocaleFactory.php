@@ -29,7 +29,7 @@ class LocaleFactory extends Factory
             'uf' => $this->faker->stateAbbr(),
             'responsible_name' => $this->faker->name(),
             'responsible_phone' => $this->faker->phoneNumber(),
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
         ];
     }
 }

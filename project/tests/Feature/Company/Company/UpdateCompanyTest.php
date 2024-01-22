@@ -20,7 +20,7 @@ class UpdateCompanyTest extends TestCaseFeature
     {
         return [
             'id', 'name', 'tradingName', 'cnpj', 'ie',
-            'phone', 'email', 'createdAt', 'updatedAt'
+            'phone', 'email', 'createdAt', 'updatedAt',
         ];
     }
 
@@ -35,7 +35,7 @@ class UpdateCompanyTest extends TestCaseFeature
             'ie' => '12345678901235',
             'phone' => '12345678902',
             'email' => 'testenew@email.com',
-            'secondaryPhone' => '12345678902'
+            'secondaryPhone' => '12345678902',
         ])
             ->assertOk()
             ->assertJsonStructure($this->getFormatResourceStructure());
@@ -52,7 +52,7 @@ class UpdateCompanyTest extends TestCaseFeature
         $this->assertEquals($this->currentUser->company_id, $company->id);
     }
 
-        public function test_should_not_update_company_when_invalid_data()
+    public function test_should_not_update_company_when_invalid_data()
     {
         $company = $this->currentUser->company()->first();
 

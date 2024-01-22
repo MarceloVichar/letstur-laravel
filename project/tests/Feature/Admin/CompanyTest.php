@@ -23,7 +23,7 @@ class CompanyTest extends TestCaseFeature
     {
         return [
             'id', 'name', 'tradingName', 'cnpj', 'ie',
-            'phone', 'email', 'createdAt', 'updatedAt'
+            'phone', 'email', 'createdAt', 'updatedAt',
         ];
     }
 
@@ -103,7 +103,7 @@ class CompanyTest extends TestCaseFeature
                 'ie' => '12345678901234',
                 'phone' => '12345678901',
                 'email' => 'teste@email.com',
-                'secondary_phone' => '12345678901'
+                'secondary_phone' => '12345678901',
             ]);
 
         $this->putJson($this->controllerAction('update', $company->id), [
@@ -113,7 +113,7 @@ class CompanyTest extends TestCaseFeature
             'ie' => '12345678901235',
             'phone' => '12345678902',
             'email' => 'testenew@email.com',
-            'secondaryPhone' => '12345678902'
+            'secondaryPhone' => '12345678902',
         ])
             ->assertOk()
             ->assertJsonStructure($this->getFormatResourceStructure());

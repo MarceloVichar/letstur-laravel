@@ -45,7 +45,7 @@ class EventTest extends TestCaseFeature
         return [
             'id', 'totalSeats', 'availableSeats', 'departureDateTime',
             'arrivalDateTime', 'tourGuideId', 'vehicleId', 'tourId',
-            'driverId', 'companyId', 'createdAt', 'updatedAt'
+            'driverId', 'companyId', 'createdAt', 'updatedAt',
         ];
     }
 
@@ -104,7 +104,6 @@ class EventTest extends TestCaseFeature
             ->assertJsonStructure($this->getFormatResourceStructure());
 
         $event = Event::find($response->offsetGet('id'));
-
 
         $this->assertEquals($this->vehicle->number_of_seats, $event->total_seats);
         $this->assertEquals($this->vehicle->number_of_seats, $event->available_seats);
@@ -180,7 +179,6 @@ class EventTest extends TestCaseFeature
         ])
             ->assertForbidden();
     }
-
 
     public function test_should_delete_event()
     {

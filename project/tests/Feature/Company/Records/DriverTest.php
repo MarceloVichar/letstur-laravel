@@ -157,7 +157,6 @@ class DriverTest extends TestCaseFeature
             ->assertForbidden();
     }
 
-
     public function test_should_delete_driver()
     {
         $driver = Driver::factory()

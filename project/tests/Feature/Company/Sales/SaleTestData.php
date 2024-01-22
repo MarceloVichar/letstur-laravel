@@ -76,8 +76,7 @@ class SaleTestData extends TestCaseFeature
             (
                 (data_get($this->getRequestData(), 'eventSales.0.quantity') * $this->event1->tour->price_cents) +
                 (data_get($this->getRequestData(), 'eventSales.1.quantity') * $this->event2->tour->price_cents)
-            )
-            , $sale->total_value_cents
+            ), $sale->total_value_cents
         );
         $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.eventId'), $sale->events->first()->id);
         $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.quantity'), $sale->events->first()->pivot->quantity);

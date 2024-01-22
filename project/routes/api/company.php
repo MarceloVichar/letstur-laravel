@@ -1,17 +1,17 @@
 <?php
 
-use App\Http\Api\Controllers\Company\UserController;
 use App\Http\Api\Controllers\Company\Company\GetUserCompany;
 use App\Http\Api\Controllers\Company\Company\UpdateUserCompany;
-use App\Http\Api\Controllers\Company\Records\DriverController;
-use App\Http\Api\Controllers\Company\Records\VehicleController;
-use App\Http\Api\Controllers\Company\Records\TourGuideController;
-use App\Http\Api\Controllers\Company\Records\LocaleController;
-use App\Http\Api\Controllers\Company\Records\TourTypeController;
-use App\Http\Api\Controllers\Company\Records\TourController;
 use App\Http\Api\Controllers\Company\Events\EventController;
-use App\Http\Api\Controllers\Company\Sales\SaleController;
+use App\Http\Api\Controllers\Company\Records\DriverController;
+use App\Http\Api\Controllers\Company\Records\LocaleController;
+use App\Http\Api\Controllers\Company\Records\TourController;
+use App\Http\Api\Controllers\Company\Records\TourGuideController;
+use App\Http\Api\Controllers\Company\Records\TourTypeController;
+use App\Http\Api\Controllers\Company\Records\VehicleController;
 use App\Http\Api\Controllers\Company\Sales\ConfirmSaleController;
+use App\Http\Api\Controllers\Company\Sales\SaleController;
+use App\Http\Api\Controllers\Company\UserController;
 use Illuminate\Support\Facades\Route;
 
 return [
