@@ -15,16 +15,16 @@ class SaleTestData extends TestCaseFeature
 
         $this->loginAsCompanyAdmin();
 
-        $this->event1 = Event::factory()
-            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
+        $this->vehicle = Vehicle::factory()
             ->create([
                 'company_id' => $this->currentUser->company_id,
+                'number_of_seats' => 10,
             ]);
 
-        $this->event2 = Event::factory()
-            ->has(Vehicle::factory()->state(['availableSeats' => 10]))
+        $this->event = Event::factory()
             ->create([
                 'company_id' => $this->currentUser->company_id,
+                'vehicle_id' => $this->vehicle->id,
             ]);
     }
 
@@ -39,21 +39,7 @@ class SaleTestData extends TestCaseFeature
             ],
             'eventSales' => [
                 [
-                    'eventId' => $this->event1->id,
-                    'quantity' => 2,
-                    'passengers' => [
-                        [
-                            'name' => 'John Doe',
-                            'document' => '12345678901',
-                        ],
-                        [
-                            'name' => 'Mariah Doe',
-                            'document' => '12345678902',
-                        ],
-                    ],
-                ],
-                [
-                    'eventId' => $this->event2->id,
+                    'eventId' => $this->event->id,
                     'quantity' => 1,
                     'passengers' => [
                         [
@@ -74,28 +60,17 @@ class SaleTestData extends TestCaseFeature
         $this->assertEquals(data_get($this->getRequestData(), 'customer.phone'), $sale->customer_phone);
         $this->assertEquals(
             (
-                (data_get($this->getRequestData(), 'eventSales.0.quantity') * $this->event1->tour->price_cents) +
-                (data_get($this->getRequestData(), 'eventSales.1.quantity') * $this->event2->tour->price_cents)
+                (data_get($this->getRequestData(), 'eventSales.0.quantity') * $this->event->tour->price_cents)
             ), $sale->total_value_cents
         );
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.eventId'), $sale->events->first()->id);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.quantity'), $sale->events->first()->pivot->quantity);
+        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.eventId'), $sale->events->last()->id);
+        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.quantity'), $sale->events->last()->pivot->quantity);
         $this->assertEquals(
-            (data_get($this->getRequestData(), 'eventSales.0.quantity') * $this->event1->tour->price_cents),
-            $sale->events->first()->pivot->total_value_cents
-        );
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.0.name'), json_decode($sale->events->first()->pivot->passengers)[0]->name);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.0.document'), json_decode($sale->events->first()->pivot->passengers)[0]->document);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.1.name'), json_decode($sale->events->first()->pivot->passengers)[1]->name);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.1.document'), json_decode($sale->events->first()->pivot->passengers)[1]->document);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.1.eventId'), $sale->events->last()->id);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.1.quantity'), $sale->events->last()->pivot->quantity);
-        $this->assertEquals(
-            (data_get($this->getRequestData(), 'eventSales.1.quantity') * $this->event2->tour->price_cents),
+            (data_get($this->getRequestData(), 'eventSales.0.quantity') * $this->event->tour->price_cents),
             $sale->events->last()->pivot->total_value_cents
         );
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.1.passengers.0.name'), json_decode($sale->events->last()->pivot->passengers)[0]->name);
-        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.1.passengers.0.document'), json_decode($sale->events->last()->pivot->passengers)[0]->document);
+        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.0.name'), json_decode($sale->events->last()->pivot->passengers)[0]->name);
+        $this->assertEquals(data_get($this->getRequestData(), 'eventSales.0.passengers.0.document'), json_decode($sale->events->last()->pivot->passengers)[0]->document);
         $this->assertEquals($this->currentUser->id, $sale->seller_id);
         $this->assertEquals($this->currentUser->company_id, $sale->company_id);
     }

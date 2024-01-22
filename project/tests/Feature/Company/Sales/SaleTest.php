@@ -70,7 +70,8 @@ class SaleTest extends SaleTestData
 
     public function test_should_create_sale_when_valid_data()
     {
-        $response = $this->postJson($this->controllerAction('store'), $this->getRequestData())
+        $data = $this->getRequestData();
+        $response = $this->postJson($this->controllerAction('store'), $data)
             ->assertCreated()
             ->assertJsonStructure($this->getFormatResourceStructure());
 
@@ -93,7 +94,9 @@ class SaleTest extends SaleTestData
                 'company_id' => $this->currentUser->company_id,
             ]);
 
-        $this->putJson($this->controllerAction('update', $sale->id), $this->getRequestData())
+        $data = $this->getRequestData();
+
+        $this->putJson($this->controllerAction('update', $sale->id), $data)
             ->assertOk()
             ->assertJsonStructure($this->getFormatResourceStructure());
 
