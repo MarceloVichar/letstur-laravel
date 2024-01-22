@@ -5,10 +5,6 @@ on:
     branches:
       - main
       - develop
-      - feature/**
-      - hotfix/**
-      - release/**
-      - refactor/**
   pull_request:
     branches:
       - main
@@ -60,11 +56,11 @@ jobs:
 
       - name: Run tests (Unit)
         working-directory: ./project
-        run: php artisan test --parallel --testsuite Unit
+        run: php artisan test --testsuite Unit
 
       - name: Run tests (Feature)
         working-directory: ./project
-        run: php artisan test --parallel --testsuite Feature
+        run: php artisan test --testsuite Feature
         env:
           DB_HOST: localhost
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
