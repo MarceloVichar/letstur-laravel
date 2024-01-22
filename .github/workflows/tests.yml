@@ -55,12 +55,10 @@ jobs:
           php artisan key:generate
 
       - name: Run tests (Unit)
-        id: unit-tests
         working-directory: ./project
         run: php artisan test --testsuite Unit
 
       - name: Run tests (Feature)
-        needs: unit-tests
         working-directory: ./project
         run: php artisan test --testsuite Feature
         env:
