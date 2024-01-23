@@ -20,7 +20,9 @@ class PermissionsAndRoles
             ],
 
             RoleEnum::COMPANY_OPERATOR => [
-                'users' => $permissions('users'),
+                'events' => collect(['view', 'view any']),
+                'tours' => collect(['view', 'view any']),
+                'sales' => collect(['view', 'view any', 'create', 'update', 'delete']),
             ],
 
             RoleEnum::COMPANY_ADMIN => [
@@ -33,7 +35,7 @@ class PermissionsAndRoles
                 'tour-types' => $permissions('tour-types'),
                 'tours' => $permissions('tours'),
                 'events' => $permissions('events'),
-                'sales' => $permissions('sales'),
+                'sales' => collect(['view', 'view any', 'confirm', 'delete']),
             ],
         ];
     }
