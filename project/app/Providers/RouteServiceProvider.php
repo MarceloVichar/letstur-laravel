@@ -59,12 +59,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api/company')
             ->name('api.company.')
-            ->middleware(['api', 'auth:sanctum', 'user-type:'.RoleEnum::COMPANY_ADMIN.','.RoleEnum::COMPANY_OPERATOR])
+            ->middleware(['api', 'auth:sanctum', 'user-type:' . RoleEnum::COMPANY_ADMIN . ',' . RoleEnum::COMPANY_OPERATOR])
             ->group(base_path('routes/api/company.php'));
 
         Route::prefix('api/admin')
             ->name('api.admin.')
-            ->middleware(['api', 'auth:sanctum', 'user-type:'.RoleEnum::ADMIN])
+            ->middleware(['api', 'auth:sanctum', 'user-type:' . RoleEnum::ADMIN])
             ->group(base_path('routes/api/admin.php'));
 
         Route::prefix('api')

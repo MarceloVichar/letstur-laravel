@@ -21,8 +21,8 @@ class CheckUserType
         }
 
         $message = 'Forbidden Route. ';
-        $message .= "This resource was meant for '".$this->getUserTypeLabel($roles[0])."' and ";
-        $message .= "you are authenticated as '".$this->getUserTypeLabel($request->user()->getRoleNames()[0])."'.";
+        $message .= "This resource was meant for '" . $this->getUserTypeLabel($roles[0]) . "' and ";
+        $message .= "you are authenticated as '" . $this->getUserTypeLabel($request->user()->getRoleNames()[0]) . "'.";
 
         return abort(403, $message);
     }
