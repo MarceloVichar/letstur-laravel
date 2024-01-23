@@ -13,7 +13,7 @@ class SaleTestData extends TestCaseFeature
     {
         parent::setUp();
 
-        $this->loginAsCompanyAdmin();
+        $this->loginAsCompanyOperator();
 
         $this->vehicle = Vehicle::factory()
             ->create([

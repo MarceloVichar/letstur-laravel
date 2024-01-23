@@ -32,6 +32,7 @@ class SaleTest extends SaleTestData
             ->create([
                 'status' => SaleStatusEnum::PENDING,
                 'company_id' => $this->currentUser->company_id,
+                'seller_id' => $this->currentUser->id,
             ]);
 
         Sale::factory()
@@ -162,6 +163,8 @@ class SaleTest extends SaleTestData
 
     public function test_should_confirm_sale()
     {
+        $this->loginAsCompanyAdmin();
+
         Queue::fake();
 
         $this->useActionsFromController(ConfirmSaleController::class);
@@ -185,6 +188,8 @@ class SaleTest extends SaleTestData
 
     public function test_should_not_confirm_sale_from_other_company()
     {
+        $this->loginAsCompanyAdmin();
+
         $this->useActionsFromController(ConfirmSaleController::class);
         $sale = Sale::factory()
             ->create();
@@ -195,6 +200,8 @@ class SaleTest extends SaleTestData
 
     public function test_should_not_confirm_sale_when_status_is_not_pending()
     {
+        $this->loginAsCompanyAdmin();
+
         $this->useActionsFromController(ConfirmSaleController::class);
         $sale = Sale::factory()
             ->create([
