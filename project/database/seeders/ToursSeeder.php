@@ -12,7 +12,7 @@ class ToursSeeder extends Seeder
         Tour::factory()
             ->create([
                 'id' => 1,
-                'name' => 'Passeio na pracinha',
+                'name' => 'Passeio na pracinha central',
                 'round_trip' => 20,
                 'price_cents' => 10000,
                 'locale_id' => 1,
