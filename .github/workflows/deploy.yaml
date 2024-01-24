@@ -20,9 +20,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
-          sudo su
-          usermod -aG docker $USER
-          cd /var/www/letstur-laravel
+          cd ~/var/www/letstur-laravel
           git pull origin main
           docker compose exec app composer install
           docker compose exec app php artisan upgrade --dev
