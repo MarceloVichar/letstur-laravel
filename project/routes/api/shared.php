@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\MeController;
-use Illuminate\Support\Facades\Broadcast;
+use App\Http\Api\Controllers\Auth\LoginController;
+use App\Http\Api\Controllers\Auth\LogoutController;
+use App\Http\Api\Controllers\Auth\MeController;
+use App\Http\Api\Controllers\Auth\UpdateMeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])
     ->group(function () {
         Route::get('/me', MeController::class);
+        Route::put('/me', UpdateMeController::class);
 
         Route::post('/logout', LogoutController::class)->name('logout');
     });

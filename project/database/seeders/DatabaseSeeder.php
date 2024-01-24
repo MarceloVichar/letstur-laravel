@@ -15,7 +15,16 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
-            UsersSeeder::class
+            CompaniesSeeder::class,
+            UsersSeeder::class,
+            VehiclesSeeder::class,
+            DriversSeeder::class,
+            TourTypesSeeder::class,
+            TourGuidesSeeder::class,
+            LocalesSeeder::class,
+            ToursSeeder::class,
+            EventsSeeder::class,
+            SalesSeeder::class,
         ]);
     }
 }

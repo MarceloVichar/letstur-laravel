@@ -8,7 +8,7 @@ services:
   app:
     user: ${APP_UID}:${APP_GID}
     container_name: ${APP_NAME}-app
-    image: webdevops/php-nginx:8.1-alpine
+    image: webdevops/php-nginx:8.2-alpine
     volumes:
       - ./project:/app
     working_dir: /app
@@ -21,7 +21,7 @@ services:
 
   postgres:
     container_name: ${APP_NAME}-postgres
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     volumes:
       - app-postgres-data:/var/lib/postgresql/data
     environment:
@@ -30,17 +30,6 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - ${POSTGRES_PORT}:5432
-
-  postgres-test:
-    image: postgres:15-alpine
-    environment:
-      - POSTGRES_DB=${POSTGRES_TEST_DB}
-      - POSTGRES_USER=${POSTGRES_TEST_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_TEST_PASSWORD}
-    tmpfs:
-      - /var/lib/postgresql/data
-    ports:
-      - ${POSTGRES_TEST_PORT}:5432
 
   redis:
     container_name: ${APP_NAME}-redis
@@ -56,9 +45,3 @@ services:
       - ./project:/app
     environment:
       - PHP_MEMORY_LIMIT=${WORKER_MEMORY_LIMIT}
-
-  mailcatcher:
-    container_name: ${APP_NAME}-mailcatcher
-    image: schickling/mailcatcher
-    ports:
-      - ${MAILCATCHER_PORT}:1080
