@@ -6,7 +6,6 @@ volumes:
 
 services:
   app:
-    user: ${APP_UID}:${APP_GID}
     container_name: ${APP_NAME}-app
     image: webdevops/php-nginx:8.2-alpine
     volumes:
