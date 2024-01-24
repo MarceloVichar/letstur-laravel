@@ -30,4 +30,7 @@ return [
 
     Route::apiResource('sales', SaleController::class),
     Route::put('sales/{sale}/confirm', ConfirmSaleController::class),
+
+    Route::get('dashboard/events', \App\Http\Api\Controllers\Company\Dashboard\GetEventsInfosController::class),
+    Route::get('dashboard/sales', \App\Http\Api\Controllers\Company\Dashboard\GetSalesInfosController::class),
 ];
