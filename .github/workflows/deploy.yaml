@@ -21,6 +21,7 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           sudo su
+          usermod -aG docker $USER
           cd /var/www/letstur-laravel
           git pull origin main
           docker compose exec app composer install
