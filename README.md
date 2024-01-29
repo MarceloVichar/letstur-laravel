@@ -10,6 +10,7 @@ API para administração de agências de passeios turísticos, desenvolvida em L
 * Workflows GitHub para rodar testes, lint e deploy via AWS;
 * Horizon configurado para visualizar jobs disparados;
 * Mailcatcher para visualizar email enviados pela aplicação;
+* Documentação com Insomnia.
 
 
 ## Utilizando o projeto pelo docker
