@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Account\Models\Company;
 use App\Domain\Records\Enums\CnhTypesEnum;
 use App\Domain\Records\Enums\VehicleTypeEnum;
 use App\Domain\Records\Models\Vehicle;
@@ -11,9 +12,10 @@ class VehiclesSeeder extends Seeder
 {
     public function run()
     {
+        $company_id = Company::query()->first()->id;
+
         Vehicle::factory()
             ->create([
-                'id' => 1,
                 'license_plate' => 'ABC1234',
                 'type' => VehicleTypeEnum::BUS,
                 'model' => 'Mercedes Benz Bus',
@@ -23,7 +25,7 @@ class VehiclesSeeder extends Seeder
                 'owner_document' => '12345678900',
                 'owner_phone' => '11999999999',
                 'owner_email' => 'zezinho@email.com',
-                'company_id' => 1,
+                'company_id' => $company_id,
             ]);
     }
 }
