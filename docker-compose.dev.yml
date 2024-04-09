@@ -20,3 +20,4 @@ services:
     image: schickling/mailcatcher
     ports:
       - ${MAILCATCHER_PORT}:1080
+      - 1025:1025
