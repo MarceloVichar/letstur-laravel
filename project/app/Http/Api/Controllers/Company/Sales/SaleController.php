@@ -36,8 +36,8 @@ class SaleController extends ResourceController
                 AllowedFilter::exact('status'),
             ])
             ->with(['seller'])
-            ->allowedSorts(['created_at'])
-            ->defaultSort('-created_at')
+            ->allowedSorts(['created_at', 'updated_at'])
+            ->defaultSort('-updated_at')
             ->resource(SaleResource::class);
     }
 
