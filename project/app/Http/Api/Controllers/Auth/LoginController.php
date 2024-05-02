@@ -19,6 +19,7 @@ class LoginController
             return response()->json([
                 'access_token' => $token,
                 'type_token' => 'Bearer',
+                'user_roles' => $user->roles->pluck('name'),
             ], 200);
         }
 
